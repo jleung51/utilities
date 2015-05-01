@@ -1,105 +1,23 @@
+/*
+ *
+ * Author: Jeffrey Leung
+ * Last edited: 2015-05-01
+ *
+ * This program contains functions which calculate and print the change required for a purchase.
+ *
+ */
 
-
-
-
-#include <iostream>
 #include <cmath>
+#include <iomanip>
+#include <iostream>
 
 #include "change.hpp"
 
-static void print_denomination( unsigned int amount, float denomination );
+// This function prints the amount of a given denomination (bill or coin).
+static void print_denomination( unsigned int amount, double denomination );
 
-/*
-
-typedef enum
-{
-  bill_100,
-  bill_50,
-  bill_20,
-  bill_10,
-  bill_5,
-  coin_2,
-  coin_1,
-  coin_0.25,
-  coin_0.10,
-  coin_0.05,
-  coin_0.01
-} denomination;
-
-
-static void denomination_print( unsigned int bill_100,
-                                unsigned int bill_50,
-                                unsigned int bill_20,
-                                unsigned int bill_10,
-                                unsigned int bill_5,
-                                unsigned int coin_2,
-                                unsigned int coin_1,
-                                unsigned int coin_0.25,
-                                unsigned int coin_0.10,
-                                unsigned int coin_0.05,
-                                unsigned int coin_0.01 )
-{
-  std::cout << "The required change is: \n" ;
-
-  if( bill_100 > 0 )
-  {
-    std::cout << bill_100 << " $100 bills\n" ;
-  }
-
-  if( bill_50 > 0 )
-  {
-    std::cout << bill_50 << " $50 bills\n" ;
-  }
-
-  if( bill_20 > 0 )
-  {
-    std::cout << bill_20 << " $20 bills\n" ;
-  }
-
-  if( bill_10 > 0 )
-  {
-    std::cout << bill_10 << " $10 bills\n" ;
-  }
-
-  if( bill_5 > 0 )
-  {
-    std::cout << bill_5 << " $5 bills\n" ;
-  }
-
-  if( coin_2 > 0 )
-  {
-    std::cout << coin_2 << " toonies\n" ;
-  }
-
-  if( coin_1 > 0 )
-  {
-    std::cout << coin_1 << " loonies\n" ;
-  }
-
-  if( coin_0.25 > 0 )
-  {
-    std::cout << coin_0.25 << " quarters\n" ;
-  }
-
-  if( coin_0.10 > 0 )
-  {
-    std::cout << coin_0.10 << " dimes\n" ;
-  }
-
-  if( coin_0.05 > 0 )
-  {
-    std::cout << coin_0.05 << " nickels\n" ;
-  }
-
-  if( coin_0.01 > 0 )
-  {
-    std::cout << coin_0.01 << " pennies\n" ;
-  }
-
-  return;
-}
-*/
-static void print_denomination( unsigned int amount, float denomination )
+// This function prints the amount of a given denomination (bill or coin).
+static void print_denomination( unsigned int amount, double denomination )
 {
   if( amount == 0 )
   {
@@ -175,41 +93,53 @@ static void print_denomination( unsigned int amount, float denomination )
   return;
 }
 
-void return_change( float price, float money_given )
+// This function displays the change necessary, if any, for a given purchase.
+void return_change( double price, double money_given )
 {
-  if( std::fmod( price, 0.01 ) != 0 )
+
+  if( price <= 0 )
   {
-    std::cout << "That is not a valid price.\n" ;
+    std::cout << "Error: That is not a valid price.\n" ;
+    exit( 1 );
   }
-  else if( std::fmod( money_given, 0.01 ) != 0 )
+  else if( money_given < 0 )
   {
     std::cout << "That is not a valid amount for money given.\n" ;
+    exit( 1 );
   }
 
-  float change = money_given - price;
+  double change = money_given - price;
 
   if( change == 0 )
   {
-    std::cout << "Exact change given.\n" ;
+    std::cout << "Exact change.\n" ;
   }
   else if( change < 0 )
   {
-    change = abs(change);
-    std::cout << "Not enough money was given; $" << change << " more is required.\n" ;
+    change = 0 - change;
+
+    std::cout << "Not enough money was given; $" ;
+    std::cout << std::setprecision(2) << std::fixed << change ;  // Prints only two decimal places
+    std::cout << " more is required.\n" ;
   }
   else
   {
-    std::cout << "The change is $" << change << ", which is:\n" ;
+    std::cout << "The change is $" ;
+    std::cout << std::setprecision(2) << std::fixed << change ;  // Prints only two decimal places
+    std::cout << ", which is:\n" ;
 
-    float denominations[11] = { 100, 50, 20, 10, 5, 2, 1, 0.25, 0.10, 0.05, 0.01 };
+    double denominations[11] = { 100, 50, 20, 10, 5, 2, 1, 0.25, 0.10, 0.05, 0.01 };
     unsigned int leftover;
     unsigned int coins_bills;
 
     for( int i = 0; i < 11; i++ )
     {
-      leftover = std::fmod( money_given, denominations[i] );
-      coins_bills = ( money_given - leftover ) / denominations[i];
-      money_given = leftover;
+      // Sets coins_bills to be the necessary amount of a specific denomination,
+      // and sets change to the remaining change to be calculated.
+
+      leftover = std::fmod( change, denominations[i] );
+      coins_bills = ( change - leftover ) / denominations[i];
+      change -= coins_bills * denominations[i];
 
       print_denomination( coins_bills, denominations[i] );
     }

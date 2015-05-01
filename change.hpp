@@ -1,6 +1,7 @@
 #ifndef CHANGE_HPP
 #define CHANGE_HPP
 
-void return_change( float price, float money_given );
+// This function displays the change necessary, if any, for a given purchase.
+void return_change( double price, double money_given );
 
 #endif

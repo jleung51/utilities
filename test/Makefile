@@ -1,5 +1,5 @@
 # Source files
-SOURCES  = ../change.cpp# test.cpp
+SOURCES  = ../change.cpp test.cpp
 
 # Header files
 HSOURCES = ../change.hpp
