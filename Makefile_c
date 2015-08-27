@@ -19,7 +19,7 @@ CFLAGS = -std=c11 -g -Wall
 help:
 	# INSTRUCTIONS:
 	#   To test ___, run: make ___
-	#   To test memory allocation, run: make mem_chk
+	#   To test memory allocation, run: make ___ mem_chk
 	#   To remove compiled output files, run: make clean
 
 # $ make <output_name>
@@ -29,7 +29,6 @@ help:
 
 # $ make mem_chk
 mem_chk: $(SOURCES) $(HSOURCES)
-	gcc $(CFLAGS) $(SOURCES) -o <output_name> -lm
 	valgrind --leak-check=full ./<output_name>
 
 # $ make <custom>
