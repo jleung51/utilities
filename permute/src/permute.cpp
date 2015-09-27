@@ -24,11 +24,13 @@ namespace
   
   // Only for use by Permute().
   // This function returns all possible permutations into the
-  // permutations vector.
+  // permutations vector, as well as possible subsequence permutations if
+  // permute_subseqs is true.
   // When first called, chars_current should be empty.
   void PermuteHelper( std::vector<std::string>* permutations,
                       std::string chars_current,
-                      std::string chars_remaining );
+                      std::string chars_remaining,
+                      const bool permute_subseqs );
 
   // This function checks for any repeated items in the vector and
   // removes them.
@@ -47,11 +49,13 @@ namespace
 
   // Only for use by Permute().
   // This function returns all possible permutations into the
-  // permutations vector.
+  // permutations vector, as well as possible subsequence permutations if
+  // permute_subseqs is true.
   // When first called, chars_current should be empty.
   void PermuteHelper( std::vector<std::string>* permutations,
                       std::string chars_current,
-                      std::string chars_remaining )
+                      std::string chars_remaining,
+                      const bool permute_subseqs )
   {
     if( chars_remaining.size() > 0 )
     {
@@ -67,11 +71,23 @@ namespace
         
         PermuteHelper( permutations,
                        chars_current_new,
-                       chars_remaining_new );
+                       chars_remaining_new,
+                       permute_subseqs );
       }
     }
-    else if( chars_current.size() > 0 )
+    else if( !permute_subseqs &&
+             chars_current.size() > 0 )
     {
+      // If subsequences are not to permuted, this will only run when
+      // the function has a complete permutation.
+      permutations->push_back( chars_current );
+    }
+    
+    if( permute_subseqs &&
+        chars_current.size() > 0 )
+    {
+      // If subsequences are to be permuted, this will run any time
+      // the function has a valid subsequence.
       permutations->push_back( chars_current );
     }
     
@@ -130,11 +146,15 @@ namespace
 // Functions:
 
 // This function returns a pointer to a vector of strings stored in heap
-// memory, which are the possible permutations of the given characters.
+// memory, which are the possible permutations of the given characters
+// (and its subsequences, if requested).
+// If permute_subseqs is set to true, then the vector will also contain all
+// possible permuted subsequences of the possiblities.
 // User is responsible for freeing the allocated memory.
 // An exception is thrown if:
 //   possibilities is an empty string (invalid_argument)
-std::vector<std::string>* Permute( std::string possibilities )
+std::vector<std::string>* Permute( std::string possibilities,
+                                   const bool permute_subseqs )
 {
   if( possibilities.size() == 0 )
   {
@@ -145,7 +165,7 @@ std::vector<std::string>* Permute( std::string possibilities )
   std::vector<std::string>* permutations = new std::vector<std::string>;
   std::string s;
 
-  PermuteHelper( permutations, s, possibilities );
+  PermuteHelper( permutations, s, possibilities, permute_subseqs );
   RemoveVectorDuplicates<std::string>( permutations );
   return permutations;
 }
