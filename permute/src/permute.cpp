@@ -38,12 +38,6 @@ namespace
   //   v is given an empty vector (invalid_argument)
   template <class T>
   void RemoveVectorDuplicates( std::vector<T>* v );
-  
-  // Only for use by RemoveVectorDuplicates().
-  // This helper function removes any repeated items in the vector.
-  // When first called, index should be 0.
-  template <class T>
-  void RemoveVectorDuplicatesHelper( std::vector<T>* v, unsigned int index );
 
   // Static function implementations:
 
@@ -108,36 +102,6 @@ namespace
     }
 
     RemoveVectorDuplicatesHelper<std::string>( v, 0 );
-    return;
-  }
-  
-  // Only for use by RemoveVectorDuplicates().
-  // This helper function removes any repeated items in the vector.
-  // When first called, index should be 0.
-  template <class T>
-  void RemoveVectorDuplicatesHelper( std::vector<T>* v, unsigned int index )
-  {
-    unsigned int size = v->size();
-    if( index > size )
-    {
-      return;
-    }
-    
-    unsigned int i = index+1;
-    while( i < size )
-    {
-      if( v->at(i) == v->at(index) )
-      {
-        v->erase( v->begin() + i );
-        --size;
-      }
-      else
-      {
-        ++i;
-      }
-    }
-
-    RemoveVectorDuplicatesHelper( v, index+1 );
     return;
   }
   
