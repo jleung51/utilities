@@ -1,101 +1,98 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-06-14
+ * Last edited: 2015-10-17
+ * Forked from https:github.com/jleung51/algorithms
  *
- * This C program contains the implementation of a recursive merge sort
+ * This C++ program contains the implementation of a recursive merge sort
  * algorithm on an array of integers.
  *
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <iostream>
+#include <stdexcept>
 
-#include "merge_sort.h"
+#include "../include/merge_sort.hpp"
 
-// Only for use by merge_sort().
-// This function merges two sorted arrays to create a single array (in the
-// memory spaces of the original arrays) with elements from least to greatest.
-// array1 and array2 must be in consecutive memory spaces - i.e. two sections
-// of the same array.
-static void merge_arrays( int* array1, unsigned int len1,
-                          int* array2, unsigned int len2 );
-
-
-
-// Only for use by merge_sort().
-// This function merges two sorted arrays to create a single array (in the
-// memory spaces of the original arrays) with elements from least to greatest.
-// array1 and array2 must be in consecutive memory spaces - i.e. two sections
-// of the same array.
-static void merge_arrays( int* array1, unsigned int len1,
-                          int* array2, unsigned int len2 )
+// Static functions:
+namespace
 {
-  int* array_final = array1;
-  int len_final = len1 + len2;
-  int array_copy[len_final];
 
-  int i = 0;
-  while( len1 > 0 && len2 > 0 )
+  // Only for use by merge_sort().
+  // This function merges two sorted arrays to create a single array (in the
+  // memory spaces of the original arrays) with elements from least to greatest.
+  // array1 and array2 must be in consecutive memory spaces - i.e. two sections
+  // of the same array.
+  template <class T>
+  void MergeArrays( T* array1, unsigned int len1,
+                     T* array2, unsigned int len2 );
+
+  // Only for use by merge_sort().
+  // This function merges two sorted arrays to create a single array (in the
+  // memory spaces of the original arrays) with elements from least to greatest.
+  // array1 and array2 must be in consecutive memory spaces - i.e. two sections
+  // of the same array.
+  template <class T>
+  void MergeArrays( T* array1, unsigned int len1,
+                     T* array2, unsigned int len2 )
   {
-    if( array1[0] < array2[0] )  // Insert element from array1 into array_copy
+    T* array_final = array1;
+    unsigned int len_final = len1 + len2;
+    T array_copy[len_final];
+
+    unsigned int i = 0;
+    while( len1 > 0 && len2 > 0 )
     {
-      array_copy[i] = array1[0];
-      array1 += 1;
-      len1--;
+      if( array1[0] < array2[0] )  // Insert element from array1 into array_copy
+      {
+        array_copy[i] = array1[0];
+        array1++;
+        len1--;
+      }
+      else  // Insert element from array2 into array_copy
+      {
+        array_copy[i] = array2[0];
+        array2++;
+        len2--;
+      }
+
+      ++i;
     }
-    else  // Insert element from array2 into array_copy
+
+    // Leftover elements
+    for( unsigned int j = 0; j < len1; ++j )
     {
-      array_copy[i] = array2[0];
-      array2 += 1;
-      len2--;
+      array_copy[i + j] = array1[j];
+    }
+    for( unsigned int j = 0; j < len2; ++j )
+
+    {
+      array_copy[i + j] = array2[j];
     }
 
-    ++i;
-  }
+    for( unsigned int j = 0; j < len_final; ++j )
+    {
+      array_final[j] = array_copy[j];
+    }
 
-  // Leftover elements
-  int j;
-  for( j = 0; j < len1; ++j )
-  {
-    array_copy[i + j] = array1[j];
+    return;
   }
-  for( j = 0; j < len2; ++j )
-
-  {
-    array_copy[i + j] = array2[j];
-  }
-
-  for( j = 0; j < len_final; ++j )
-  {
-    array_final[j] = array_copy[j];
-  }
-
-  return;
+  
 }
 
 // This function recursively sorts an array from least to greatest using the
 // merge sort algorithm.
-void merge_sort( int* array, unsigned int len )
+template <class T>
+void MergeSort( T* array, unsigned int len )
 {
-  if( array == NULL )
-  {
-    printf( "Error: merge_sort() was given a null pointer.\n" );
-    exit( 1 );
-  }
+  //TODO Add exception if array is NULL
 
-  if( len <= 1 )
-  {
-    return;
-  }
+  unsigned int mid = len / 2;
 
-  int mid = len / 2;
+  MergeSort( array,     mid );
+  MergeSort( array+mid, len-mid );
 
-  merge_sort( array,     mid );
-  merge_sort( array+mid, len-mid );
-
-  merge_arrays( array, mid, array+mid, len-mid );
+  MergeArrays( array, mid, array+mid, len-mid );
 
   return;
 }
