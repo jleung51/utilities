@@ -104,10 +104,16 @@ namespace
 
 // This function recursively sorts an array from least to greatest using the
 // merge sort algorithm.
+// An exception is thrown if:
+//   array is NULL (invalid_argument)
 template <class T>
 void MergeSort( T* array, unsigned int len )
 {
-  //TODO Add exception if array is NULL
+  if( array == NULL )
+  {
+    throw std::invalid_argument( "Error: MergeSort() was given a NULL array." );
+  }
+  
   MergeSortHelper( array, len );
   return;
 }
