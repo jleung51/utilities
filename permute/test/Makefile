@@ -1,6 +1,5 @@
 # Source files
-SOURCES  = ../src/merge_sort.cpp \
-           ../src/permute.cpp \
+SOURCES  = ../src/permute.cpp \
            test.cpp
 
 # Header files
