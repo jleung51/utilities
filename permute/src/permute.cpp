@@ -8,6 +8,7 @@
  *
  */
 
+#include <algorithm>
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -126,9 +127,13 @@ std::vector<std::string>* Permute( std::string possibilities,
     throw std::invalid_argument( "Error: PermuteHelper() was given "\
       "an empty set of characters." );
   }
-
+  
   std::vector<std::string>* permutations = new std::vector<std::string>;
   std::string s;
+  
+  // Allows for efficient checking for duplicates after permutation
+  // (which occur when there are multiple of the same character)
+  std::sort( possibilities.begin(), possibilities.end() );
 
   PermuteHelper( permutations, s, possibilities, permute_subseqs );
   RemoveVectorDuplicates<std::string>( permutations );
