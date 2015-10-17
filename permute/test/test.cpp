@@ -28,7 +28,7 @@ namespace
   void PrintArray( T* array, unsigned int len )
   {
   
-    for( unsigned int i; i < len; ++i )
+    for( unsigned int i = 0; i < len; ++i )
     {
       std::cout << array[i];
       if( i != len-1 )
@@ -50,7 +50,7 @@ int main()
             << std::endl
             << std::endl;
   
-  unsigned int array_len = 12;
+  unsigned int array_len = 10;
   int array[array_len];
   for( unsigned int i = 0; i < 10; ++i )
   {
@@ -69,7 +69,7 @@ int main()
             << std::endl;
             
   PrintArray<int>( array, array_len );
-  
+  std::cout << std::endl;
   
   std::cout << "TESTING PERMUTE():"
             << std::endl
