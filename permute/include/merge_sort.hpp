@@ -15,5 +15,3 @@
 // merge sort algorithm.
 template <class T>
 void MergeSort( T* array, unsigned int len );
-
-#endif
