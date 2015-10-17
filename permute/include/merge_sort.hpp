@@ -100,10 +100,13 @@ namespace
   template <class T>
   void MergeSortHelper( T* array, unsigned int len )
   {
+    if( len < 2 )
+    {
+      return;
+    }
     unsigned int mid = len / 2;
-
-    MergeSort( array,     mid );
-    MergeSort( array+mid, len-mid );
+    MergeSortHelper( array,     mid );
+    MergeSortHelper( array+mid, len-mid );
 
     MergeArrays( array, mid, array+mid, len-mid );
     
