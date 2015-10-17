@@ -31,6 +31,7 @@ namespace
     for( unsigned int i = 0; i < len; ++i )
     {
       std::cout << array[i];
+      
       if( i != len-1 )
       {
         std::cout << " ";
@@ -44,7 +45,8 @@ namespace
 
 int main()
 {
-  std::cout << "TESTING MERGESORT():"
+  std::cout << std::endl
+            << "TESTING MERGESORT():"
             << std::endl
             << "______________________________________________"
             << std::endl
@@ -52,26 +54,25 @@ int main()
   
   unsigned int array_len = 10;
   int array[array_len];
-  for( unsigned int i = 0; i < 10; ++i )
+  for( unsigned int i = 0; i < array_len; ++i )
   {
     array[i] = rand() % 100;
   }
   
-  std::cout << "Using merge sort to sort the randomly generated array:"
+  std::cout << "Randomly generated array:"
             << std::endl;
-            
-  PrintArray<int>( array, array_len );
-  MergeSort<int>( array, array_len );
-  
-  std::cout << std::endl
-            << std::endl
-            << "Results in the array:"
-            << std::endl;
-            
   PrintArray<int>( array, array_len );
   std::cout << std::endl;
   
-  std::cout << "TESTING PERMUTE():"
+  MergeSort<int>( array, array_len );
+  
+  std::cout << "Sorted:"
+            << std::endl;
+  PrintArray<int>( array, array_len );
+  std::cout << std::endl;
+  
+  std::cout << std::endl
+            << "TESTING PERMUTE():"
             << std::endl
             << "______________________________________________"
             << std::endl
