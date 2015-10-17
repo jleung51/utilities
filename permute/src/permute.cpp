@@ -100,8 +100,9 @@ namespace
       throw std::invalid_argument( "Error: RemoveVectorDuplicates() was given "\
         "an empty vector." );
     }
-
-    RemoveVectorDuplicatesHelper<std::string>( v, 0 );
+    
+    //TODO Implement check for duplicates
+    
     return;
   }
   
