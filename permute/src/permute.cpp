@@ -104,7 +104,14 @@ namespace
     
     std::sort( v->begin(), v->end() );
     
-    //TODO Check for duplicates
+    for( unsigned int i = 0; i < v->size()-1; ++i )
+    {
+      if( v->at(i) == v->at(i+1) )
+      {
+        v->erase( v->begin() + i );
+        --i;
+      }
+    }
     
     return;
   }
