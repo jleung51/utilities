@@ -14,6 +14,32 @@
 
 #include "../include/permute.hpp"
 
+// Static functions:
+namespace
+{
+  // This function prints the contents of a given array in order.
+  template <class T>
+  void PrintArray( T* array, unsigned int len );
+
+  // This function prints the contents of a given array in order.
+  template <class T>
+  void PrintArray( T* array, unsigned int len )
+  {
+  
+    for( unsigned int i; i < len; ++i )
+    {
+      std::cout << array[i];
+      if( i != len-1 )
+      {
+        std::cout << " ";
+      }
+    }
+    
+    return;
+  }
+  
+}
+
 int main()
 {
   std::string possibilities1 = "aabc";
