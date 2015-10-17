@@ -1,7 +1,7 @@
 /*
  *
  * Authors: Jeffrey Leung
- * Last edited: 2015-09-27
+ * Last edited: 2015-10-17
  *
  * This C++ file contains functions which return all permutations of a given
  * set of characters.

@@ -3,8 +3,7 @@ SOURCES  = ../src/permute.cpp \
            test.cpp
 
 # Header files
-HSOURCES = ../include/merge_sort.hpp \
-           ../include/permute.hpp
+HSOURCES = ../include/permute.hpp
 
 # Compiler options
 CFLAGS = -std=c++14 -g -Wall

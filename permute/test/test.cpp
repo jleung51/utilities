@@ -13,7 +13,6 @@
 #include <string>
 #include <vector>
 
-#include "../include/merge_sort.hpp"
 #include "../include/permute.hpp"
 
 // Static functions:
@@ -45,32 +44,6 @@ namespace
 
 int main()
 {
-  std::cout << std::endl
-            << "TESTING MERGESORT():"
-            << std::endl
-            << "______________________________________________"
-            << std::endl
-            << std::endl;
-  
-  unsigned int array_len = 10;
-  int array[array_len];
-  for( unsigned int i = 0; i < array_len; ++i )
-  {
-    array[i] = rand() % 100;
-  }
-  
-  std::cout << "Randomly generated array:"
-            << std::endl;
-  PrintArray<int>( array, array_len );
-  std::cout << std::endl;
-  
-  MergeSort<int>( array, array_len );
-  
-  std::cout << "Sorted:"
-            << std::endl;
-  PrintArray<int>( array, array_len );
-  std::cout << std::endl;
-  
   std::cout << std::endl
             << "TESTING PERMUTE():"
             << std::endl
