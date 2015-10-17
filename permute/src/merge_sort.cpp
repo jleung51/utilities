@@ -18,7 +18,7 @@
 namespace
 {
 
-  // Only for use by merge_sort().
+  // Only for use by MergeSortHelper().
   // This function merges two sorted arrays to create a single array (in the
   // memory spaces of the original arrays) with elements from least to greatest.
   // array1 and array2 must be in consecutive memory spaces - i.e. two sections
@@ -26,8 +26,14 @@ namespace
   template <class T>
   void MergeArrays( T* array1, unsigned int len1,
                      T* array2, unsigned int len2 );
+                     
+  // Only for use by MergeSort().
+  // This function recursively sorts an array from least to greatest using the
+  // merge sort algorithm.
+  template <class T>
+  void MergeSortHelper( T* array, unsigned int len );
 
-  // Only for use by merge_sort().
+  // Only for use by MergeSortHelper().
   // This function merges two sorted arrays to create a single array (in the
   // memory spaces of the original arrays) with elements from least to greatest.
   // array1 and array2 must be in consecutive memory spaces - i.e. two sections
@@ -78,6 +84,22 @@ namespace
     return;
   }
   
+  // Only for use by MergeSort().
+  // This function recursively sorts an array from least to greatest using the
+  // merge sort algorithm.
+  template <class T>
+  void MergeSortHelper( T* array, unsigned int len )
+  {
+    unsigned int mid = len / 2;
+
+    MergeSort( array,     mid );
+    MergeSort( array+mid, len-mid );
+
+    MergeArrays( array, mid, array+mid, len-mid );
+    
+    return;
+  }
+  
 }
 
 // This function recursively sorts an array from least to greatest using the
@@ -86,13 +108,6 @@ template <class T>
 void MergeSort( T* array, unsigned int len )
 {
   //TODO Add exception if array is NULL
-
-  unsigned int mid = len / 2;
-
-  MergeSort( array,     mid );
-  MergeSort( array+mid, len-mid );
-
-  MergeArrays( array, mid, array+mid, len-mid );
-
+  MergeSortHelper( array, len );
   return;
 }
