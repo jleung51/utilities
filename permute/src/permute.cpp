@@ -37,6 +37,7 @@ namespace
   // removes them.
   // An exception is thrown if:
   //   v is given an empty vector (invalid_argument)
+  //   v is given an unsorted vector (invalid_argument)
   template <class T>
   void RemoveVectorDuplicates( std::vector<T>* v );
 
@@ -93,6 +94,7 @@ namespace
   // removes them.
   // An exception is thrown if:
   //   v is given an empty vector (invalid_argument)
+  //   v is given an unsorted vector (invalid_argument)
   template <class T>
   void RemoveVectorDuplicates( std::vector<T>* v )
   {
