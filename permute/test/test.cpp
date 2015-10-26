@@ -18,29 +18,30 @@
 // Static functions:
 namespace
 {
-  // This function prints the contents of a given array in order.
-  template <class T>
-  void PrintArray( T* array, unsigned int len );
 
-  // This function prints the contents of a given array in order.
-  template <class T>
-  void PrintArray( T* array, unsigned int len )
+// This static function prints the contents of a given array in order.
+template <class T>
+void PrintArray( T* array, unsigned int len );
+
+// This static function prints the contents of a given array in order.
+template <class T>
+void PrintArray( T* array, unsigned int len )
+{
+
+  for( unsigned int i = 0; i < len; ++i )
   {
-  
-    for( unsigned int i = 0; i < len; ++i )
-    {
-      std::cout << array[i];
-      
-      if( i != len-1 )
-      {
-        std::cout << " ";
-      }
-    }
+    std::cout << array[i];
     
-    return;
+    if( i != len-1 )
+    {
+      std::cout << " ";
+    }
   }
   
+  return;
 }
+  
+}  // Unnamed namespace
 
 int main()
 {
