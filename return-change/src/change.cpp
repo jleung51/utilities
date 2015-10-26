@@ -11,7 +11,7 @@
 #include <iomanip>
 #include <iostream>
 
-#include "change.hpp"
+#include "../include/change.hpp"
 
 // This function prints the amount of a given denomination (bill or coin).
 static void print_denomination( unsigned int amount, double denomination );

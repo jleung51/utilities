@@ -1,8 +1,9 @@
 # Source files
-SOURCES  = ../return_change/change.cpp test.cpp
+SOURCES  = ../src/change.cpp \
+           test.cpp
 
 # Header files
-HSOURCES = ../return_change/change.hpp
+HSOURCES = ../include/change.hpp
 
 # Compiler options
 CFLAGS = -std=c++11 -g -Wall

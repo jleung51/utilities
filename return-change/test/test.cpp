@@ -1,7 +1,7 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-05-01
+ * Last edited: 2015-10-25
  *
  * This program contains a testing implementation of the functions in change.cpp.
  *
@@ -10,7 +10,7 @@
 #include <iostream>
 #include <cmath>
 
-#include "../return_change/change.hpp"
+#include "../include/change.hpp"
 
 int main()
 {
