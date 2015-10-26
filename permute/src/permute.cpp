@@ -135,7 +135,7 @@ std::vector<std::string>* Permute( std::string possibilities,
 {
   if( possibilities.size() == 0 )
   {
-    throw std::invalid_argument( "Error: PermuteHelper() was given "\
+    throw std::invalid_argument( "Error: Permute() was given "\
       "an empty set of characters." );
   }
   
