@@ -53,31 +53,30 @@ int main()
             << std::endl;
 
   std::string possibilities1 = "aabc";
-  std::vector<std::string>* permutations1 = Permute( possibilities1, false );
+  std::vector<std::string> permutations1;
+  Permute( permutations1, possibilities1, false );
 
   std::cout << "Permutations of the characters 'aabc':"
             << std::endl;
-            
-  for( unsigned int i = 0; i < permutations1->size(); ++i )
+  for( unsigned int i = 0; i < permutations1.size(); ++i )
   {
-    std::cout << permutations1->at(i)
+    std::cout << permutations1[i]
               << std::endl;
   }
   std::cout << std::endl;
-  delete permutations1;
   
   std::string possibilities2 = "abc";
-  std::vector<std::string>* permutations2 = Permute( possibilities2, true );
+  std::vector<std::string> permutations2;
+  Permute( permutations2, possibilities2, true );
+  
   std::cout << "Subsequence permutations of the characters 'abc':"
             << std::endl;
-            
-  for( unsigned int i = 0; i < permutations2->size(); ++i )
+  for( unsigned int i = 0; i < permutations2.size(); ++i )
   {
-    std::cout << permutations2->at(i)
+    std::cout << permutations2[i]
               << std::endl;
   }
   std::cout << std::endl;
-  delete permutations2;
   
   return 0;
 }

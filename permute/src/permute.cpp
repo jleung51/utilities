@@ -1,7 +1,7 @@
 /*
  *
  * Authors: Jeffrey Leung
- * Last edited: 2015-10-17
+ * Last edited: 2015-10-25
  *
  * This C++ file contains functions which return all permutations of a given
  * set of characters.
@@ -27,7 +27,7 @@ namespace
 // permutations vector, as well as possible subsequence permutations if
 // permute_subseqs is true.
 // When first called, chars_current should be empty.
-void PermuteHelper( std::vector<std::string>* permutations,
+void PermuteHelper( std::vector<std::string>& permutations,
                     std::string chars_current,
                     std::string chars_remaining,
                     const bool permute_subseqs );
@@ -38,7 +38,7 @@ void PermuteHelper( std::vector<std::string>* permutations,
 //   v is given an empty vector (invalid_argument)
 //   v is given an unsorted vector (invalid_argument)
 template <class T>
-void RemoveVectorDuplicates( std::vector<T>* v );
+void RemoveVectorDuplicates( std::vector<T>& v );
 
 // Static function implementations:
 
@@ -47,7 +47,7 @@ void RemoveVectorDuplicates( std::vector<T>* v );
 // permutations vector, as well as possible subsequence permutations if
 // permute_subseqs is true.
 // When first called, chars_current should be empty.
-void PermuteHelper( std::vector<std::string>* permutations,
+void PermuteHelper( std::vector<std::string>& permutations,
                     std::string chars_current,
                     std::string chars_remaining,
                     const bool permute_subseqs )
@@ -75,7 +75,7 @@ void PermuteHelper( std::vector<std::string>* permutations,
   {
     // If subsequences are not to permuted, this will only run when
     // the function has a complete permutation.
-    permutations->push_back( chars_current );
+    permutations.push_back( chars_current );
   }
   
   if( permute_subseqs &&
@@ -83,9 +83,8 @@ void PermuteHelper( std::vector<std::string>* permutations,
   {
     // If subsequences are to be permuted, this will run any time
     // the function has a valid subsequence.
-    permutations->push_back( chars_current );
+    permutations.push_back( chars_current );
   }
-  
   return;
 }
 
@@ -95,21 +94,21 @@ void PermuteHelper( std::vector<std::string>* permutations,
 //   v is given an empty vector (invalid_argument)
 //   v is given an unsorted vector (invalid_argument)
 template <class T>
-void RemoveVectorDuplicates( std::vector<T>* v )
+void RemoveVectorDuplicates( std::vector<T>& v )
 {
-  if( v->size() == 0 )
+  if( v.size() == 0 )
   {
     throw std::invalid_argument( "Error: RemoveVectorDuplicates() was given "\
       "an empty vector." );
   }
   
-  std::sort( v->begin(), v->end() );
+  std::sort( v.begin(), v.end() );
   
-  for( unsigned int i = 0; i < v->size()-1; ++i )
+  for( unsigned int i = 0; i < v.size()-1; ++i )
   {
-    if( v->at(i) == v->at(i+1) )
+    if( v[i] == v[i+1] )
     {
-      v->erase( v->begin() + i );
+      v.erase( v.begin() + i );
       --i;
     }
   }
@@ -122,27 +121,33 @@ void RemoveVectorDuplicates( std::vector<T>* v )
 
 // Functions:
 
-// This function returns a pointer to a vector of strings stored in heap
-// memory, which are the possible permutations of the given characters
-// (and its subsequences, if requested).
+// This function calculates all possible permutations of the given characters
+// (and their subsequences, if necessary) and places the results into the
+// vector permutations (which should be empty at the start).
 // If permute_subseqs is set to true, then the vector will also contain all
 // possible permuted subsequences of the possiblities.
-// User is responsible for freeing the allocated memory.
 // An exception is thrown if:
+//   permutations is a non-empty vector (invalid_argument)
 //   possibilities is an empty string (invalid_argument)
-std::vector<std::string>* Permute( std::string possibilities,
-                                   const bool permute_subseqs )
+void Permute( std::vector<std::string>& permutations,
+              std::string possibilities,
+              const bool permute_subseqs )
 {
-  if( possibilities.size() == 0 )
+  if( !permutations.empty() )
+  {
+    throw std::invalid_argument( "Error: Permute() was given a non-empty "\
+      "vector for permutations." );
+  }
+  else if( possibilities.size() == 0 )
   {
     throw std::invalid_argument( "Error: Permute() was given "\
       "an empty set of characters." );
   }
   
-  std::vector<std::string>* permutations = new std::vector<std::string>;
   std::string s;
 
   PermuteHelper( permutations, s, possibilities, permute_subseqs );
   RemoveVectorDuplicates<std::string>( permutations );
-  return permutations;
+  
+  return;
 }
