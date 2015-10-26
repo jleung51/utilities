@@ -13,11 +13,15 @@
 
 #include "../include/change.hpp"
 
-// This function prints the amount of a given denomination (bill or coin).
-static void print_denomination( unsigned int amount, double denomination );
+// Static functions:
+namespace
+{
 
 // This function prints the amount of a given denomination (bill or coin).
-static void print_denomination( unsigned int amount, double denomination )
+static void PrintDenomination( unsigned int amount, double denomination );
+
+// This function prints the amount of a given denomination (bill or coin).
+static void PrintDenomination( unsigned int amount, double denomination )
 {
   if( amount == 0 )
   {
@@ -79,7 +83,7 @@ static void print_denomination( unsigned int amount, double denomination )
   }
   else
   {
-    std::cout << "Error: print_denomination() was given an invalid denomination (" << denomination\
+    std::cout << "Error: PrintDenomination() was given an invalid denomination (" << denomination\
                   << ").\nBugfix required.\n" ;
     exit( 2 );
   }
@@ -93,10 +97,11 @@ static void print_denomination( unsigned int amount, double denomination )
   return;
 }
 
-// This function displays the change necessary, if any, for a given purchase.
-void return_change( double price, double money_given )
-{
+}  // Unnamed namespace
 
+// This function displays the change necessary, if any, for a given purchase.
+void ReturnChange( double price, double money_given )
+{
   if( price <= 0 )
   {
     std::cout << "Error: That is not a valid price.\n" ;
@@ -141,7 +146,7 @@ void return_change( double price, double money_given )
       coins_bills = ( change - leftover ) / denominations[i];
       change -= coins_bills * denominations[i];
 
-      print_denomination( coins_bills, denominations[i] );
+      PrintDenomination( coins_bills, denominations[i] );
     }
   }
 

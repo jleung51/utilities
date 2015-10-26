@@ -17,14 +17,14 @@ int main()
   float price;
   float money_given;
 
-  std::cout << "Enter the price of the item: $" ;
-  std::cin >> price ;
+  std::cout << "Enter the price of the item: $";
+  std::cin >> price;
 
-  std::cout << "Enter the money given: $" ;
-  std::cin >> money_given ;
+  std::cout << "Enter the money given: $";
+  std::cin >> money_given;
 
-  std::cout << "\n" ;
-  return_change( price, money_given );
+  std::cout << "\n";
+  ReturnChange( price, money_given );
 
   return 0;
 }
