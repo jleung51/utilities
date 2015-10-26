@@ -3,7 +3,7 @@
  * Author: Jeffrey Leung
  * Last edited: 2015-10-25
  *
- * This program contains a testing implementation of the functions in change.cpp.
+ * This program contains a testing implementation of ReturnChange().
  *
  */
 

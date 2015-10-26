@@ -1,9 +1,10 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-05-01
+ * Last edited: 2015-10-25
  *
- * This program contains functions which calculate and print the change required for a purchase.
+ * This program contains a function to calculate and print the change required
+ * for a purchase.
  *
  */
 
@@ -17,11 +18,11 @@
 namespace
 {
 
-// This function prints the amount of a given denomination (bill or coin).
-static void PrintDenomination( unsigned int amount, double denomination );
+// This static function prints the amount of a given denomination (bill or coin).
+void PrintDenomination( unsigned int amount, double denomination );
 
-// This function prints the amount of a given denomination (bill or coin).
-static void PrintDenomination( unsigned int amount, double denomination )
+// This static function prints the amount of a given denomination (bill or coin).
+void PrintDenomination( unsigned int amount, double denomination )
 {
   if( amount == 0 )
   {
@@ -83,16 +84,18 @@ static void PrintDenomination( unsigned int amount, double denomination )
   }
   else
   {
-    std::cout << "Error: PrintDenomination() was given an invalid denomination (" << denomination\
-                  << ").\nBugfix required.\n";
+    std::cout << "Error: PrintDenomination() was given an invalid "
+              << "denomination ("
+              << denomination
+              << ").\nBugfix required.\n";
     exit( 2 );
   }
 
   if( amount > 1 && denomination != 0.01 )
   {
-    std::cout << "s" ;
+    std::cout << "s";
   }
-  std::cout << "\n" ;
+  std::cout << "\n";
 
   return;
 }
@@ -124,13 +127,17 @@ void ReturnChange( double price, double money_given )
     change = 0 - change;
 
     std::cout << "Not enough money was given; $";
-    std::cout << std::setprecision(2) << std::fixed << change;  // Prints only two decimal places
+    std::cout << std::setprecision(2)  // Prints only two decimal places
+              << std::fixed
+              << change;
     std::cout << " more is required.\n";
   }
   else
   {
     std::cout << "The change is $";
-    std::cout << std::setprecision(2) << std::fixed << change;  // Prints only two decimal places
+    std::cout << std::setprecision(2)  // Prints only two decimal places
+              << std::fixed
+              << change;
     std::cout << ", which is:\n";
 
     double denominations[11] = { 100, 50, 20, 10, 5, 2, 1, 0.25, 0.10, 0.05, 0.01 };
