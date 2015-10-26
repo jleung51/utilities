@@ -1,7 +1,7 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-10-17
+ * Last edited: 2015-10-25
  *
  * This C++ file tests the implementation of the permumutation function in
  * permute.cpp.
@@ -56,7 +56,9 @@ int main()
   std::vector<std::string> permutations1;
   Permute( permutations1, possibilities1, false );
 
-  std::cout << "Permutations of the characters 'aabc':"
+  std::cout << "Permutations of the characters '"
+            << possibilities1
+            << "':"
             << std::endl;
   for( unsigned int i = 0; i < permutations1.size(); ++i )
   {
@@ -69,7 +71,9 @@ int main()
   std::vector<std::string> permutations2;
   Permute( permutations2, possibilities2, true );
   
-  std::cout << "Subsequence permutations of the characters 'abc':"
+  std::cout << "Subsequence permutations of the characters '"
+            << possibilities2
+            << "':"
             << std::endl;
   for( unsigned int i = 0; i < permutations2.size(); ++i )
   {
