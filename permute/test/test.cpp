@@ -54,7 +54,16 @@ int main()
 
   std::string possibilities1 = "aabc";
   std::vector<std::string> permutations1;
-  Permute( permutations1, possibilities1, false );
+  
+  try
+  {
+    Permute( permutations1, possibilities1, false );
+  }
+  catch( std::exception& e )
+  {
+    std::cout << e.what()
+              << std::endl;
+  }
 
   std::cout << "Permutations of the characters '"
             << possibilities1
@@ -69,7 +78,16 @@ int main()
   
   std::string possibilities2 = "abc";
   std::vector<std::string> permutations2;
-  Permute( permutations2, possibilities2, true );
+  
+  try
+  {
+    Permute( permutations2, possibilities2, true );
+  }
+  catch( std::exception& e )
+  {
+    std::cout << e.what()
+              << std::endl;
+  }
   
   std::cout << "Subsequence permutations of the characters '"
             << possibilities2

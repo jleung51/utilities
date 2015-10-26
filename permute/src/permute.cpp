@@ -147,7 +147,16 @@ void Permute( std::vector<std::string>& permutations,
   std::string s;
 
   PermuteHelper( permutations, s, possibilities, permute_subseqs );
-  RemoveVectorDuplicates<std::string>( permutations );
+  
+  try
+  {
+    RemoveVectorDuplicates<std::string>( permutations );
+  }
+  catch( std::exception& e )
+  {
+    std::cout << e.what()
+              << std::endl;
+  }
   
   return;
 }
