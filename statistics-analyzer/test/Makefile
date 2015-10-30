@@ -1,0 +1,41 @@
+# Source files
+SOURCES  = <source_files>
+
+# Header files
+HSOURCES = <header_files>
+
+# Compiler options
+CFLAGS = -std=c++14 -g -Wall
+
+#####
+###
+#
+# 'Make' commands
+#
+###
+#####
+
+# $ 'make' or 'make help'
+help:
+	# INSTRUCTIONS:
+	#   To test ___, run: make ___
+	#   To test memory allocation, run: make ___ mem_chk
+	#   To remove compiled output files, run: make clean
+
+# $ make <output_name>
+<output_name>: $(SOURCES) $(HSOURCES)
+	g++ $(CFLAGS) $(SOURCES) -o <output_name>
+	# To execute the program, run: ./<output_name>
+
+# $ make mem_chk
+mem_chk: $(SOURCES) $(HSOURCES)
+	valgrind --leak-check=full ./<output_name>
+
+# $ make <custom>
+<custom>: <source_files>
+	<command>
+
+# $ make clean
+# Removes created files
+clean:
+	rm -f <output_name> *.o *~
