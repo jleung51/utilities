@@ -73,7 +73,7 @@ unsigned int LowerLimit( std::vector<T> dataset );
 //   The dataset is empty (length_error)
 //   The dataset is not sorted in ascending order (invalid_argument)
 template <class T>
-unsigned int UpperLimit( std::vector<T> dataset, unsigned int );
+unsigned int UpperLimit( std::vector<T> dataset );
 
 // This function returns the IQR of a vector dataset.
 // The 1.5 IQR rule is used.
