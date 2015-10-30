@@ -1,8 +1,13 @@
 # Source files
-SOURCES  = <source_files>
+SOURCES  = ../src/single-variable-analysis.cpp \
+           ../src/multi-variable-analysis.cpp \
+           ../src/statistics-analyzer.cpp \
+           test.cpp \
 
 # Header files
-HSOURCES = <header_files>
+HSOURCES = ../include/single-variable-analysis.hpp \
+           ../include/multi-variable-analysis.hpp \
+           ../include/statistics-analyzer.hpp \
 
 # Compiler options
 CFLAGS = -std=c++14 -g -Wall
@@ -18,24 +23,15 @@ CFLAGS = -std=c++14 -g -Wall
 # $ 'make' or 'make help'
 help:
 	# INSTRUCTIONS:
-	#   To test ___, run: make ___
-	#   To test memory allocation, run: make ___ mem_chk
+	#   To test compilation, run: make output
 	#   To remove compiled output files, run: make clean
 
-# $ make <output_name>
-<output_name>: $(SOURCES) $(HSOURCES)
-	g++ $(CFLAGS) $(SOURCES) -o <output_name>
-	# To execute the program, run: ./<output_name>
-
-# $ make mem_chk
-mem_chk: $(SOURCES) $(HSOURCES)
-	valgrind --leak-check=full ./<output_name>
-
-# $ make <custom>
-<custom>: <source_files>
-	<command>
+# $ make output
+output: $(SOURCES) $(HSOURCES)
+	g++ $(CFLAGS) $(SOURCES) -o output
+	# To execute the program, run: ./output
 
 # $ make clean
 # Removes created files
 clean:
-	rm -f <output_name> *.o *~
+	rm -f output *.o *~
