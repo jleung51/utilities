@@ -1,9 +1,10 @@
 # Source files
 SOURCES  = ../src/permute.cpp \
-           test.cpp
+           test.cpp \
 
 # Header files
-HSOURCES = ../include/permute.hpp
+HSOURCES = ../include/merge_sort_vector.hpp \
+           ../include/permute.hpp \
 
 # Compiler options
 CFLAGS = -std=c++14 -g -Wall
