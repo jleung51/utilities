@@ -13,7 +13,6 @@
 
 #include "../include/merge_sort_vector.hpp"
 
-/*
 // This function prints the contents of a given vector.
 template <class T>
 void PrintVector( std::vector<T> v )
@@ -30,7 +29,7 @@ void PrintVector( std::vector<T> v )
   std::cout << "]";
 
   return;
-}*/
+}
 
 int main()
 {
