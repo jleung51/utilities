@@ -13,9 +13,19 @@
 
 #include "../include/merge_sort_vector.hpp"
 
-// This function prints the contents of a given vector.
+// Static functions:
+namespace
+{
+
+// This static function prints the contents of a given vector in a
+// horizontal list, surrounded by brackets [].
 template <class T>
-void PrintVector( std::vector<T> v )
+void PrintVectorHorizontal( std::vector<T> v );
+
+// This static function prints the contents of a given vector in a
+// horizontal list, surrounded by brackets [].
+template <class T>
+void PrintVectorHorizontal( std::vector<T> v )
 {
   std::cout << "[ ";
   
@@ -31,6 +41,8 @@ void PrintVector( std::vector<T> v )
   return;
 }
 
+}  // Unnamed namespace for static functions
+
 int main()
 {
   std::vector<int> v;
@@ -40,13 +52,13 @@ int main()
   }
   
   std::cout << "The contents of the vector before sorting are ";
-  PrintVector( v );
+  PrintVectorHorizontal( v );
   std::cout << std::endl;
   
   MergeSortVector( v );
   
   std::cout << "The contents of the vector after sorting are  ";
-  PrintVector( v );
+  PrintVectorHorizontal( v );
   std::cout << std::endl;
 
   return 0;
