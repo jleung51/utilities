@@ -9,7 +9,7 @@
 
 #include <iostream>
 
-#include "test-only/print-data-structures.hpp"
+#include "print-data-structures.hpp"
 #include "../include/merge-sort-vector.hpp"
 #include "../include/single-variable-analysis.hpp"
 #include "../include/multi-variable-analysis.hpp"
