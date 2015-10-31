@@ -10,7 +10,12 @@
 
 #pragma once
 
+#include <cmath>
+#include <iostream>
+#include <stdexcept>
 #include <vector>
+
+// Function prototypes:
 
 // This function sorts a given vector dataset.
 // May be used on an already-sorted dataset.
@@ -97,3 +102,37 @@ void Outliers( const std::vector<T>& dataset, std::vector<T>& outliers );
 //   The dataset is empty (length_error)
 template <class T>
 T StandardDeviation( const std::vector<T>& dataset );
+
+
+// Static functions:
+namespace
+{
+
+// Static function prototypes:
+
+// This static function returns true if a given vector dataset is sorted in
+// ascending order, and false otherwise.
+template <class T>
+bool IsSorted( const std::vector<T>& dataset );
+
+// Static function implementations:
+
+// This private function returns true if a given vector dataset is sorted in
+// ascending order, and false otherwise.
+template <class T>
+bool IsSorted( const std::vector<T>& dataset )
+{
+  for( unsigned int i = 0; i < dataset.size()-1; ++i )
+  {
+    if( dataset[i] > dataset[i+1] )
+    {
+      return false;
+    }
+  }
+  return true;
+}
+
+}  // Unnamed namespace
+
+
+// Functions:

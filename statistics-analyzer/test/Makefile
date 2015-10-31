@@ -1,6 +1,5 @@
 # Source files
-SOURCES  = ../src/single-variable-analysis.cpp \
-           ../src/multi-variable-analysis.cpp \
+SOURCES  = ../src/multi-variable-analysis.cpp \
            ../src/statistics-analyzer.cpp \
            test.cpp \
 
