@@ -22,14 +22,14 @@ namespace  // Only available within this file
 // This private function returns true if a given vector dataset is sorted in
 // ascending order, and false otherwise.
 template <class T>
-bool IsSorted( std::vector<T>& dataset );
+bool IsSorted( const std::vector<T>& dataset );
 
 // Function implementations:
 
 // This private function returns true if a given vector dataset is sorted in
 // ascending order, and false otherwise.
 template <class T>
-bool IsSorted( std::vector<T>& dataset )
+bool IsSorted( const std::vector<T>& dataset )
 {
   for( unsigned int i = 0; i < dataset.size()-1; ++i )
   {
