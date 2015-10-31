@@ -3,7 +3,7 @@
  * Author: Jeffrey Leung
  * Last edited: 2015-10-25
  *
- * This C++ file tests the implementation of the permumutation function in
+ * This C++ file tests the implementation of the permutation function in
  * permute.cpp.
  *
  */
