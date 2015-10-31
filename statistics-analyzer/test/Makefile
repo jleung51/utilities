@@ -24,11 +24,11 @@ CFLAGS = -std=c++14 -g -Wall
 # $ 'make' or 'make help'
 help:
 	# INSTRUCTIONS:
-	#   To test compilation, run: make output
+	#   To test the single-variable analysis functions, run: make svar
 	#   To remove compiled output files, run: make clean
 
-# $ make output
-output: $(SOURCES) $(HSOURCES)
+# $ make svar
+svar: $(SOURCES) $(HSOURCES)
 	g++ $(CFLAGS) $(SOURCES) -o output
 	# To execute the program, run: ./output
 
