@@ -1,13 +1,14 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-10-30
+ * Last edited: 2015-10-31
  *
  * This C++ file tests the implementation of the merge sort (vector) function
  * in merge_sort_vector.hpp.
  *
  */
 
+#include <cstdlib>
 #include <iostream>
 #include <vector>
 
@@ -45,6 +46,8 @@ void PrintVectorHorizontal( std::vector<T> v )
 
 int main()
 {
+  srand(time(0));  // Seeding random number generator
+
   std::cout << std::endl
             << "TESTING MERGESORTVECTOR():"
             << std::endl
@@ -55,7 +58,7 @@ int main()
   std::vector<int> v;
   for( unsigned int i = 0; i < 10; ++i )
   {
-    v.push_back( 10-i );
+    v.push_back( rand() % 100 );
   }
   
   std::cout << "The contents of the vector before sorting are ";
