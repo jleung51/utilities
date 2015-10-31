@@ -45,6 +45,13 @@ void PrintVectorHorizontal( std::vector<T> v )
 
 int main()
 {
+  std::cout << std::endl
+            << "TESTING MERGESORTVECTOR():"
+            << std::endl
+            << "______________________________________________"
+            << std::endl
+            << std::endl;
+
   std::vector<int> v;
   for( unsigned int i = 0; i < 10; ++i )
   {
@@ -61,5 +68,6 @@ int main()
   PrintVectorHorizontal( v );
   std::cout << std::endl;
 
+  std::cout << std::endl;
   return 0;
 }
