@@ -1,11 +1,13 @@
 # Source files
-SOURCES  = ../src/single-variable-analysis.cpp \
+SOURCES  = test-only/print-data-structures.cpp \
+           ../src/single-variable-analysis.cpp \
            ../src/multi-variable-analysis.cpp \
            ../src/statistics-analyzer.cpp \
            test.cpp \
 
 # Header files
-HSOURCES = ../include/merge-sort-vector.hpp \
+HSOURCES = test-only/print-data-structures.hpp \
+           ../include/merge-sort-vector.hpp \
            ../include/single-variable-analysis.hpp \
            ../include/multi-variable-analysis.hpp \
            ../include/statistics-analyzer.hpp \
