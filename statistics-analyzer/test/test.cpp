@@ -1,7 +1,7 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-10-29
+ * Last edited: 2015-10-30
  *
  * This C++ program tests the statistical analysis functions/classes.
  *
@@ -19,6 +19,8 @@
 
 int main()
 {
+  srand( time(0) );  // Seeding random number generator
+
   std::cout << std::endl
             << "TESTING SINGLE VARIABLE ANALYSIS:"
             << std::endl
@@ -27,9 +29,9 @@ int main()
             << std::endl;
 
   std::vector<int> dataset;
-  for( unsigned int i = 0; i < 15; ++i )
+  for( unsigned int i = 0; i < 10; ++i )
   {
-    dataset.push_back( std::rand() % 100 );
+    dataset.push_back( rand() % 100 );
   }
   
   std::cout << "Sort():"
