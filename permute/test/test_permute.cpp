@@ -20,29 +20,26 @@
 namespace
 {
 
-// This static function prints the contents of a given array in order.
+// This static function prints the contents of a given vector in a
+// vertical list.
 template <class T>
-void PrintArray( T* array, unsigned int len );
+void PrintVectorVertical( std::vector<T> v );
 
-// This static function prints the contents of a given array in order.
+// This static function prints the contents of a given vector in a
+// vertical list.
 template <class T>
-void PrintArray( T* array, unsigned int len )
+void PrintVectorVertical( std::vector<T> v )
 {
-
-  for( unsigned int i = 0; i < len; ++i )
+  for( unsigned int i = 0; i < v.size(); ++i )
   {
-    std::cout << array[i];
-    
-    if( i != len-1 )
-    {
-      std::cout << " ";
-    }
+    std::cout << v[i]
+              << std::endl;
   }
   
   return;
 }
   
-}  // Unnamed namespace
+}  // Unnamed namespace for static functions
 
 int main()
 {
@@ -70,11 +67,7 @@ int main()
             << possibilities1
             << "':"
             << std::endl;
-  for( unsigned int i = 0; i < permutations1.size(); ++i )
-  {
-    std::cout << permutations1[i]
-              << std::endl;
-  }
+  PrintVectorVertical( permutations1 );
   std::cout << std::endl;
   
   std::string possibilities2 = "abc";
@@ -94,11 +87,7 @@ int main()
             << possibilities2
             << "':"
             << std::endl;
-  for( unsigned int i = 0; i < permutations2.size(); ++i )
-  {
-    std::cout << permutations2[i]
-              << std::endl;
-  }
+  PrintVectorVertical( permutations2 );
   std::cout << std::endl;
   
   return 0;
