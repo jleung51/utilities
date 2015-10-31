@@ -1,7 +1,7 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-10-25
+ * Last edited: 2015-10-30
  *
  * This C++ file tests the implementation of the permutation function in
  * permute.cpp.
@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 
+#include "../include/merge_sort_vector.hpp"
 #include "../include/permute.hpp"
 
 // Static functions:

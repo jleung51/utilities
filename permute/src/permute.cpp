@@ -1,7 +1,7 @@
 /*
  *
  * Authors: Jeffrey Leung
- * Last edited: 2015-10-25
+ * Last edited: 2015-10-30
  *
  * This C++ file contains functions which return all permutations of a given
  * set of characters.
@@ -14,6 +14,7 @@
 #include <string>
 #include <vector>
 
+#include "../include/merge_sort_vector.hpp"
 #include "../include/permute.hpp"
 
 // Static functions:
@@ -102,7 +103,7 @@ void RemoveVectorDuplicates( std::vector<T>& v )
       "an empty vector." );
   }
   
-  std::sort( v.begin(), v.end() );
+  MergeSortVector( v );
   
   for( unsigned int i = 0; i < v.size()-1; ++i )
   {
