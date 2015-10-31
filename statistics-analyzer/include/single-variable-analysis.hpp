@@ -15,6 +15,8 @@
 #include <stdexcept>
 #include <vector>
 
+#include "merge-sort-vector.hpp"
+
 // Function prototypes:
 
 // This function sorts a given vector dataset.
@@ -136,3 +138,18 @@ bool IsSorted( const std::vector<T>& dataset )
 
 
 // Functions:
+
+// This function sorts a given vector dataset.
+// May be used on an already-sorted dataset.
+// An exception is thrown if:
+//   The dataset is empty (length_error)
+template <class T>
+void Sort( std::vector<T>& dataset )
+{
+  if( dataset.size() == 0 )
+  {
+    throw std::length_error( "Error: Sort() was given an empty database." );
+  }
+  MergeSortVector( dataset );
+  return;
+}
