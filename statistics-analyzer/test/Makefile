@@ -5,7 +5,8 @@ SOURCES  = ../src/single-variable-analysis.cpp \
            test.cpp \
 
 # Header files
-HSOURCES = ../include/single-variable-analysis.hpp \
+HSOURCES = ../include/merge-sort-vector.hpp \
+           ../include/single-variable-analysis.hpp \
            ../include/multi-variable-analysis.hpp \
            ../include/statistics-analyzer.hpp \
 

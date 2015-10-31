@@ -9,6 +9,7 @@
 
 #include <iostream>
 
+#include "../include/merge-sort-vector.hpp"
 #include "../include/single-variable-analysis.hpp"
 #include "../include/multi-variable-analysis.hpp"
 #include "../include/statistics-analyzer.hpp"
