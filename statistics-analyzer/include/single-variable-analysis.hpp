@@ -40,12 +40,14 @@ T Mean( const std::vector<T>& dataset );
 template <class T>
 float Mean_ToFloat( const std::vector<T>& dataset );
 
-// This function returns the mode of a vector dataset.
+// This function returns the modes of a vector dataset into a given vector
+// reference.
 // An exception is thrown if:
 //   The dataset is empty (length_error)
 //   The dataset is not sorted in ascending order (invalid_argument)
+//   The modes vector is non-empty.
 template <class T>
-T Mode( const std::vector<T>& dataset );
+void Mode( const std::vector<T>& dataset, std::vector<T>& modes );
 
 // This function returns the median value of a vector dataset.
 // An exception is thrown if:
