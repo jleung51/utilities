@@ -124,29 +124,12 @@ namespace
 
 // Static function prototypes:
 
-// This static function returns true if a given vector dataset is empty,
-// and false otherwise.
-template <class T>
-bool IsEmpty( const std::vector<T>& dataset );
-
 // This static function returns true if a given vector dataset is not sorted in
 // ascending order, and false otherwise.
 template <class T>
 bool IsUnsorted( const std::vector<T>& dataset );
 
 // Static function implementations:
-
-// This static function returns true if a given vector dataset is empty,
-// and false otherwise.
-template <class T>
-bool IsEmpty( const std::vector<T>& dataset )
-{
-  if( dataset.size() == 0 )
-  {
-    return true;
-  }
-  return false;
-}
 
 // This static function returns true if a given vector dataset is not sorted in
 // ascending order, and false otherwise.
@@ -175,7 +158,7 @@ bool IsUnsorted( const std::vector<T>& dataset )
 template <class T>
 void Sort( std::vector<T>& dataset )
 {
-  if( IsEmpty( dataset ) )
+  if( dataset.empty() )
   {
     throw std::length_error( "Error: Sort() was given an empty dataset." );
   }
@@ -191,7 +174,7 @@ void Sort( std::vector<T>& dataset )
 template <class T>
 T Mean( const std::vector<T>& dataset )
 {
-  if( IsEmpty( dataset ) )
+  if( dataset.empty() )
   {
     throw std::length_error( "Error: Mean() was given an empty dataset." );
   }
@@ -212,7 +195,7 @@ T Mean( const std::vector<T>& dataset )
 template <class T>
 float Mean_ToFloat( const std::vector<T>& dataset )
 {
-  if( IsEmpty( dataset ) )
+  if( dataset.empty() )
   {
     throw std::length_error( "Error: Mean_ToFloat() was given an empty "
       "dataset." );
