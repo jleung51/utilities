@@ -173,7 +173,7 @@ bool IsUnsorted( const std::vector<T>& dataset )
 template <class T>
 void Sort( std::vector<T>& dataset )
 {
-  if( dataset.size() == 0 )
+  if( IsEmpty( dataset ) )
   {
     throw std::length_error( "Error: Sort() was given an empty dataset." );
   }
@@ -189,7 +189,7 @@ void Sort( std::vector<T>& dataset )
 template <class T>
 T Mean( const std::vector<T>& dataset )
 {
-  if( dataset.size() == 0 )
+  if( IsEmpty( dataset ) )
   {
     throw std::length_error( "Error: Mean() was given an empty dataset." );
   }
@@ -210,7 +210,7 @@ T Mean( const std::vector<T>& dataset )
 template <class T>
 float Mean_ToFloat( const std::vector<T>& dataset )
 {
-  if( dataset.size() == 0 )
+  if( IsEmpty( dataset ) )
   {
     throw std::length_error( "Error: Mean_ToFloat() was given an empty "
       "dataset." );
