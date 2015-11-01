@@ -58,11 +58,13 @@ int main()
     dataset_mean.push_back( rand() % 5 );
   }
   
-  std::cout << "The mean of the randomly generated dataset ";
+  std::cout << "The mean of the randomly generated integer dataset ";
   PrintVectorHorizontal( dataset_mean );
   std::cout << " is "
             << Mean( dataset_mean )
-            << "."
+            << " as an integer, and "
+            << Mean_ToFloat( dataset_mean )
+            << " as a float value."
             << std::endl
             << std::endl;
 
