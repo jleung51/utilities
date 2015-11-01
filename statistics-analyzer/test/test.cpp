@@ -68,5 +68,33 @@ int main()
             << std::endl
             << std::endl;
 
+
+  std::cout << "Mode():"
+            << std::endl;
+  
+  std::vector<int> dataset_mode;
+  dataset_mode.push_back( 1 );
+  dataset_mode.push_back( 1 );
+  dataset_mode.push_back( 2 );
+  dataset_mode.push_back( 3 );
+  dataset_mode.push_back( 3 );
+  dataset_mode.push_back( 3 );
+  dataset_mode.push_back( 5 );
+  dataset_mode.push_back( 5 );
+  dataset_mode.push_back( 7 );
+  dataset_mode.push_back( 7 );
+  dataset_mode.push_back( 7 );
+  
+  std::vector<int> dataset_mode_modes;
+  Mode( dataset_mode, dataset_mode_modes );
+  
+  std::cout << "The modes of the dataset ";
+  PrintVectorHorizontal( dataset_mode );
+  std::cout << " are ";
+  PrintVectorHorizontal( dataset_mode_modes );
+  std::cout << "."
+            << std::endl
+            << std::endl;
+
   return 0;
 }
