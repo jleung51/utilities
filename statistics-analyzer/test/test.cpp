@@ -1,7 +1,7 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-10-30
+ * Last edited: 2015-10-31
  *
  * This C++ program tests the statistical analysis functions/classes.
  *
@@ -45,9 +45,26 @@ int main()
   
   std::cout << "After sorting,  the randomly generated dataset is ";
   PrintVectorHorizontal( dataset_sort );
-  std::cout << std::endl;
-
-  std::cout << std::endl;
+  std::cout << std::endl
+            << std::endl;
+  
+  
+  std::cout << "Mean():"
+            << std::endl;
+  
+  std::vector<int> dataset_mean;
+  for( unsigned int i = 0; i < 3; ++i )
+  {
+    dataset_mean.push_back( rand() % 5 );
+  }
+  
+  std::cout << "The mean of the randomly generated dataset ";
+  PrintVectorHorizontal( dataset_mean );
+  std::cout << " is "
+            << Mean( dataset_mean )
+            << "."
+            << std::endl
+            << std::endl;
 
   return 0;
 }
