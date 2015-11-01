@@ -291,7 +291,16 @@ T Median( const std::vector<T>& dataset )
       "dataset." );
   }
   
-  return Quartile( dataset, 2 );
+  typename std::vector<T>::size_type size = dataset.size();
+  
+  if( size % 2 == 0 )  // Even number of elements; median requires calculation
+  {
+    return ( dataset[size/2 - 1] + dataset[size/2] ) / 2;
+  }
+  else  // Odd number of elements; median does not require calculation
+  {
+    return dataset[ size/2 ];
+  }
 }
 
 #endif // SINGLE_VARIABLE_ANALYSIS_HPP_
