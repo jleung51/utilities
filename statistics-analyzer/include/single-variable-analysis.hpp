@@ -158,7 +158,7 @@ void Sort( std::vector<T>& dataset )
 {
   if( dataset.size() == 0 )
   {
-    throw std::length_error( "Error: Sort() was given an empty database." );
+    throw std::length_error( "Error: Sort() was given an empty dataset." );
   }
   MergeSortVector( dataset );
   return;
