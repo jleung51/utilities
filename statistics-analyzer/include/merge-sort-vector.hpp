@@ -1,7 +1,7 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-10-30
+ * Last edited: 2015-11-01
  *
  * This C++ program contains the implementation of a recursive merge sort
  * algorithm on a vector.
@@ -11,7 +11,8 @@
  *
  */
 
-#pragma once
+#ifndef MERGE_SORT_VECTOR_HPP_
+#define MERGE_SORT_VECTOR_HPP_
 
 #include <iostream>
 #include <stdexcept>
@@ -145,3 +146,5 @@ void MergeSortVector( std::vector<T>& v )
 {
   MergeSortVectorHelper( v, v.begin(), v.end() );
 }
+
+#endif  // MERGE_SORT_VECTOR_HPP_

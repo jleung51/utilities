@@ -8,6 +8,9 @@
  *
  */
 
+#ifndef PRINT_DATA_STRUCTURES_HPP_
+#define PRINT_DATA_STRUCTURES_HPP_
+
 #include <iostream>
 #include <vector>
 
@@ -59,3 +62,5 @@ void PrintVectorHorizontal( std::vector<T> v )
 
   return;
 }
+
+#endif  // PRINT_DATA_STRUCTURES_HPP_

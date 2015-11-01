@@ -7,8 +7,9 @@
  * a vector of values.
  *
  */
-
-#pragma once
+ 
+#ifndef SINGLE_VARIABLE_ANALYSIS_HPP_
+#define SINGLE_VARIABLE_ANALYSIS_HPP_
 
 #include <cmath>
 #include <iostream>
@@ -272,3 +273,5 @@ void Mode( const std::vector<T>& dataset, std::vector<T>& modes )
   
   return;
 }
+
+#endif // SINGLE_VARIABLE_ANALYSIS_HPP_
