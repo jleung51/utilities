@@ -27,26 +27,27 @@ int main()
             << "______________________________________________"
             << std::endl
             << std::endl;
-
-  std::vector<int> dataset;
-  for( unsigned int i = 0; i < 10; ++i )
-  {
-    dataset.push_back( rand() % 100 );
-  }
   
   std::cout << "Sort():"
             << std::endl;
+
+  std::vector<int> dataset_sort;
+  for( unsigned int i = 0; i < 10; ++i )
+  {
+    dataset_sort.push_back( rand() % 100 );
+  }
   
   std::cout << "Before sorting, the randomly generated dataset is ";
-  PrintVectorHorizontal( dataset );
+  PrintVectorHorizontal( dataset_sort );
   std::cout << std::endl;
   
-  Sort( dataset );
+  Sort( dataset_sort );
   
   std::cout << "After sorting,  the randomly generated dataset is ";
-  PrintVectorHorizontal( dataset );
+  PrintVectorHorizontal( dataset_sort );
   std::cout << std::endl;
-  
+
   std::cout << std::endl;
+
   return 0;
 }
