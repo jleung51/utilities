@@ -211,7 +211,6 @@ float Mean_ToFloat( const std::vector<T>& dataset )
 //   The dataset is empty (length_error)
 //   The dataset is not sorted in ascending order (invalid_argument)
 //   The modes vector is non-empty.
-//TODO: The edge case (and algorithm together) should be optimizable.
 template <class T>
 void Mode( const std::vector<T>& dataset, std::vector<T>& modes )
 {
