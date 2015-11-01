@@ -12,6 +12,7 @@
 #define PRINT_DATA_STRUCTURES_HPP_
 
 #include <iostream>
+#include <iterator>
 #include <vector>
 
 // Function prototypes:
@@ -55,11 +56,12 @@ void PrintVectorHorizontal( std::vector<T> v )
 {
   std::cout << "[ ";
   
-  unsigned int i = 0;
-  typename std::vector<T>::iterator v_index;
-  for( v_index = v.begin(); v_index < v.end(); ++v_index, ++i )
+  for( typename std::vector<T>::iterator v_index = v.begin();
+       v_index != v.end();
+       std::advance( v_index, 1 ) )
   {
-    std::cout << v.at( i ) << " ";
+    std::cout << *v_index
+              << " ";
   }
   
   std::cout << "]";
@@ -71,9 +73,11 @@ void PrintVectorHorizontal( std::vector<T> v )
 template <class T>
 void PrintVectorVertical( std::vector<T> v )
 {
-  for( unsigned int i = 0; i < v.size(); ++i )
+  for( typename std::vector<T>::iterator v_index = v.begin();
+       v_index != v.end();
+       std::advance( v_index, 1 ) )
   {
-    std::cout << v[i]
+    std::cout << *v_index
               << std::endl;
   }
   
