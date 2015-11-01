@@ -204,3 +204,68 @@ float Mean_ToFloat( const std::vector<T>& dataset )
   std::vector<float> dataset_fl( dataset.begin(), dataset.end() );
   return Mean( dataset_fl );
 }
+
+// This function returns the modes of a vector dataset into a given vector
+// reference.
+// An exception is thrown if:
+//   The dataset is empty (length_error)
+//   The dataset is not sorted in ascending order (invalid_argument)
+//   The modes vector is non-empty.
+//TODO: The edge case (and algorithm together) should be optimizable.
+template <class T>
+void Mode( const std::vector<T>& dataset, std::vector<T>& modes )
+{
+  if( dataset.empty() )
+  {
+    throw std::invalid_argument( "Error: Mode() was given an empty dataset." );
+  }
+  if( IsUnsorted( dataset ) )
+  {
+    throw std::invalid_argument( "Error: Mode() was given an unsorted "\
+      "dataset." );
+  }
+  if( !(modes.empty()) )
+  {
+    throw std::invalid_argument( "Error: Mode() was given a non-empty vector "
+      "with which to return the modes." );
+  }
+  
+  T current = dataset[0];
+  unsigned int current_count = 1;
+  unsigned int mode_count = 1;
+  
+  // Deals with the edge_case of the last element not being checked against
+  // the other mode(s).
+  typename std::vector<T>::const_iterator i_previous = dataset.begin();
+  
+  typename std::vector<T>::const_iterator i;
+  for( i = ++dataset.begin(); i_previous != dataset.end(); ++i )
+  {
+    if( current == *i )
+    {
+      ++current_count;
+    }
+    else if( current != *i )
+    {
+    
+      if( current_count > mode_count )  // New mode with greater count
+      {
+        mode_count = current_count;
+        modes.resize( 0 );
+        modes.push_back( current );
+      }
+      else if( current_count == mode_count )  // New mode with same count
+      {
+        modes.push_back( current );
+      }
+      
+      current = *i;
+      i_previous = i;
+      current_count = 1;
+      
+    }
+    
+  }
+  
+  return;
+}
