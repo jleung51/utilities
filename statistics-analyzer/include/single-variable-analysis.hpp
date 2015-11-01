@@ -153,3 +153,17 @@ void Sort( std::vector<T>& dataset )
   MergeSortVector( dataset );
   return;
 }
+
+// This function returns the mean of a vector dataset.
+template <class T>
+T Mean( const std::vector<T>& dataset )
+{
+  T sum;
+  for( typename std::vector<T>::const_iterator i = dataset.begin();
+       i != dataset.end();
+       ++i )
+  {
+    sum += *i;
+  }
+  return sum / dataset.size();
+}
