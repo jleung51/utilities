@@ -1,7 +1,7 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-10-30
+ * Last edited: 2015-11-01
  *
  * This C++ header file contains functions which analyze a single dataset,
  * a vector of values.
@@ -240,11 +240,13 @@ void Mode( const std::vector<T>& dataset, std::vector<T>& modes )
   typename std::vector<T>::const_iterator i;
   for( i = ++dataset.begin(); i_previous != dataset.end(); ++i )
   {
-    if( current == *i )
+    if( i != dataset.end() &&
+        current == *i )
     {
       ++current_count;
     }
-    else if( current != *i )
+    else if( i == dataset.end() ||
+             current != *i )
     {
     
       if( current_count > mode_count )  // New mode with greater count
@@ -258,7 +260,10 @@ void Mode( const std::vector<T>& dataset, std::vector<T>& modes )
         modes.push_back( current );
       }
       
-      current = *i;
+      if( i != dataset.end() )
+      {
+        current = *i;
+      }
       i_previous = i;
       current_count = 1;
       
