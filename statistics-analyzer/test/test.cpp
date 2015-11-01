@@ -49,7 +49,7 @@ int main()
             << std::endl;
   
   
-  std::cout << "Mean():"
+  std::cout << "Mean() and Mean_ToFloat():"
             << std::endl;
   
   std::vector<int> dataset_mean;
