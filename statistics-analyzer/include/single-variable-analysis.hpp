@@ -79,7 +79,6 @@ template <class T>
 T Quartile( const std::vector<T>& dataset, unsigned int quartile_num );
 
 // This function returns the IQR of a vector dataset.
-// The 1.5 IQR rule is used.
 // An exception is thrown if:
 //   The dataset is empty (length_error)
 //   The dataset is not sorted in ascending order (invalid_argument)
