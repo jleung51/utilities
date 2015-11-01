@@ -174,7 +174,7 @@ float Mean_ToFloat( const std::vector<T>& dataset )
 template <class T>
 T Mean( const std::vector<T>& dataset )
 {
-  T sum;
+  T sum = 0;
   for( typename std::vector<T>::const_iterator i = dataset.begin();
        i != dataset.end();
        ++i )
