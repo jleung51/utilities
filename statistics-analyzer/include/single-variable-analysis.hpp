@@ -122,26 +122,26 @@ namespace
 
 // Static function prototypes:
 
-// This static function returns true if a given vector dataset is sorted in
+// This static function returns true if a given vector dataset is not sorted in
 // ascending order, and false otherwise.
 template <class T>
-bool IsSorted( const std::vector<T>& dataset );
+bool IsUnsorted( const std::vector<T>& dataset );
 
 // Static function implementations:
 
-// This private function returns true if a given vector dataset is sorted in
+// This static function returns true if a given vector dataset is not sorted in
 // ascending order, and false otherwise.
 template <class T>
-bool IsSorted( const std::vector<T>& dataset )
+bool IsUnsorted( const std::vector<T>& dataset )
 {
   for( unsigned int i = 0; i < dataset.size()-1; ++i )
   {
     if( dataset[i] > dataset[i+1] )
     {
-      return false;
+      return true;
     }
   }
-  return true;
+  return false;
 }
 
 }  // Unnamed namespace
