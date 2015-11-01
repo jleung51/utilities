@@ -27,8 +27,14 @@ template <class T>
 void Sort( std::vector<T>& dataset );
 
 // This function returns the mean of a vector dataset.
+// Return value will be in the same type as the vector; for a float return
+// value, use Mean_ToFloat().
 template <class T>
 T Mean( const std::vector<T>& dataset );
+
+// This function returns the mean of a vector dataset as a float value.
+template <class T>
+float Mean_ToFloat( const std::vector<T>& dataset );
 
 // This function returns the mode of a vector dataset.
 // An exception is thrown if:
@@ -154,7 +160,17 @@ void Sort( std::vector<T>& dataset )
   return;
 }
 
+// This function returns the mean of a vector dataset as a float value.
+template <class T>
+float Mean_ToFloat( const std::vector<T>& dataset )
+{
+  std::vector<float> dataset_fl( dataset.begin(), dataset.end() );
+  return Mean( dataset_fl );
+}
+
 // This function returns the mean of a vector dataset.
+// Return value will be in the same type as the vector; for a float return
+// value, use Mean_ToFloat().
 template <class T>
 T Mean( const std::vector<T>& dataset )
 {
