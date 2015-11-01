@@ -95,6 +95,37 @@ int main()
   std::cout << "."
             << std::endl
             << std::endl;
-
+            
+  
+  std::cout << "Median():"
+            << std::endl;
+  
+  std::vector<int> dataset_median_odd;
+  for( unsigned int i = 0; i < 5; ++i )
+  {
+    dataset_median_odd.push_back( i );
+  }
+  
+  std::vector<int> dataset_median_even;
+  for( unsigned int i = 0; i < 4; ++i )
+  {
+    dataset_median_even.push_back( i*2 );
+  }
+  
+  std::cout << "The median of the dataset ";
+  PrintVectorHorizontal( dataset_median_odd );
+  std::cout << " is "
+            << Median( dataset_median_odd )
+            << "."
+            << std::endl;
+  
+  std::cout << "The median of the dataset ";
+  PrintVectorHorizontal( dataset_median_even );
+  std::cout << " is "
+            << Median( dataset_median_even )
+            << "."
+            << std::endl
+            << std::endl;
+  
   return 0;
 }
