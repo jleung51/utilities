@@ -274,4 +274,24 @@ void Mode( const std::vector<T>& dataset, std::vector<T>& modes )
   return;
 }
 
+// This function returns the median value of a vector dataset.
+// An exception is thrown if:
+//   The dataset is empty (length_error)
+//   The dataset is not sorted in ascending order (invalid_argument)
+template <class T>
+T Median( const std::vector<T>& dataset )
+{
+  if( dataset.empty() )
+  {
+    throw std::length_error( "Error: Median() was given an empty dataset." );
+  }
+  if( IsUnsorted( dataset ) )
+  {
+    throw std::invalid_argument( "Error: Median() was given an unsorted " \
+      "dataset." );
+  }
+  
+  return Quartile( dataset, 2 );
+}
+
 #endif // SINGLE_VARIABLE_ANALYSIS_HPP_
