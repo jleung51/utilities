@@ -122,12 +122,29 @@ namespace
 
 // Static function prototypes:
 
+// This static function returns true if a given vector dataset is empty,
+// and false otherwise.
+template <class T>
+bool IsEmpty( const std::vector<T>& dataset );
+
 // This static function returns true if a given vector dataset is not sorted in
 // ascending order, and false otherwise.
 template <class T>
 bool IsUnsorted( const std::vector<T>& dataset );
 
 // Static function implementations:
+
+// This static function returns true if a given vector dataset is empty,
+// and false otherwise.
+template <class T>
+bool IsEmpty( const std::vector<T>& dataset )
+{
+  if( dataset.size() == 0 )
+  {
+    return true;
+  }
+  return false;
+}
 
 // This static function returns true if a given vector dataset is not sorted in
 // ascending order, and false otherwise.
