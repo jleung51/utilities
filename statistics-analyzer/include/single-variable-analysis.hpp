@@ -303,4 +303,55 @@ T Median( const std::vector<T>& dataset )
   }
 }
 
+// This function returns a given quartile of a vector dataset.
+// An exception is thrown if:
+//   The dataset is empty (length_error)
+//   The dataset is not sorted in ascending order (invalid_argument)
+//   The quartile is not 1, 2, or 3 (invalid_argument)
+template <class T>
+T Quartile( const std::vector<T>& dataset, unsigned int quartile_num )
+{
+  if( dataset.empty() )
+  {
+    throw std::length_error( "Error: Quartile() was given an empty dataset." );
+  }
+  if( IsUnsorted( dataset ) )
+  {
+    throw std::invalid_argument( "Error: Quartile() was given an unsorted " \
+      "dataset." );
+  }
+  if( quartile_num < 1 || 3 < quartile_num )
+  {
+    throw std::invalid_argument( "Error: Quartile() was given an invalid "\
+      "quartile number (must be 1, 2, or 3)." );
+  }
+  
+  T quartile;
+  typename std::vector<T>::size_type size = dataset.size();
+  
+  if( quartile_num == 1 )
+  {
+    std::vector<T> dataset_quartile( dataset.begin(),
+                                     dataset.begin() + ceil(size/2.0 - 0.5) );
+    quartile = Median( dataset_quartile );
+  }
+  else if( quartile_num == 2 )
+  {
+    quartile = Median( dataset );
+  }
+  else if( quartile_num == 3 )
+  {
+    std::vector<T> dataset_quartile( dataset.begin() + ceil(size/2.0),
+                                     dataset.end()  );
+    quartile = Median( dataset_quartile );
+  }
+  else
+  {
+    throw std::logic_error( "Error: Quartile() failed to catch an invalid " \
+      "quartile number." );
+  }
+  
+  return quartile;
+}
+
 #endif // SINGLE_VARIABLE_ANALYSIS_HPP_
