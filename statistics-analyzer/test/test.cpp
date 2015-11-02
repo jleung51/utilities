@@ -127,5 +127,53 @@ int main()
             << std::endl
             << std::endl;
   
+  
+  std::cout << "Quartile():"
+            << std::endl;
+  
+  std::vector<int> dataset_quartile_7;
+  for( unsigned int i = 0 ; i < 7; ++i )
+  {
+    dataset_quartile_7.push_back( i );
+  }
+  
+  std::cout << "From the dataset ";
+  PrintVectorHorizontal( dataset_quartile_7 );
+  std::cout << ":"
+            << std::endl;
+            
+  std::cout << "  Q1 = "
+            << Quartile( dataset_quartile_7, 1 )
+            << std::endl;
+  std::cout << "  Q2 (median) = "
+            << Quartile( dataset_quartile_7, 2 )
+            << std::endl;
+  std::cout << "  Q3 = "
+            << Quartile( dataset_quartile_7, 3 )
+            << std::endl
+            << std::endl;
+            
+  std::vector<int> dataset_quartile_10;
+  for( unsigned int i = 0 ; i < 10; ++i )
+  {
+    dataset_quartile_10.push_back( i );
+  }
+  
+  std::cout << "From the dataset ";
+  PrintVectorHorizontal( dataset_quartile_10 );
+  std::cout << ":"
+            << std::endl;
+            
+  std::cout << "  Q1 = "
+            << Quartile_ToFloat( dataset_quartile_10, 1 )
+            << std::endl;
+  std::cout << "  Q2 (median) = "
+            << Quartile_ToFloat( dataset_quartile_10, 2 )
+            << std::endl;
+  std::cout << "  Q3 = "
+            << Quartile_ToFloat( dataset_quartile_10, 3 )
+            << std::endl;
+
+            
   return 0;
 }
