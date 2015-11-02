@@ -72,6 +72,8 @@ template <class T>
 T Maximum( const std::vector<T>& dataset );
 
 // This function returns a given quartile of a vector dataset.
+// The median is not included in the calculation of the first or third
+// quartiles.
 // An exception is thrown if:
 //   The dataset is empty (length_error)
 //   The dataset is not sorted in ascending order (invalid_argument)
@@ -304,6 +306,8 @@ T Median( const std::vector<T>& dataset )
 }
 
 // This function returns a given quartile of a vector dataset.
+// The median is not included in the calculation of the first or third
+// quartiles.
 // An exception is thrown if:
 //   The dataset is empty (length_error)
 //   The dataset is not sorted in ascending order (invalid_argument)
