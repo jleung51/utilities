@@ -81,6 +81,17 @@ T Maximum( const std::vector<T>& dataset );
 template <class T>
 T Quartile( const std::vector<T>& dataset, unsigned int quartile_num );
 
+// This function returns a given quartile of a vector dataset as a float value.
+// The median is not included in the calculation of the first or third
+// quartiles.
+// An exception is thrown if:
+//   The dataset is empty (length_error)
+//   The dataset is not sorted in ascending order (invalid_argument)
+//   The quartile is not 1, 2, or 3 (invalid_argument)
+template <class T>
+float Quartile_ToFloat( const std::vector<T>& dataset,
+                        unsigned int quartile_num );
+
 // This function returns the IQR of a vector dataset.
 // An exception is thrown if:
 //   The dataset is empty (length_error)
@@ -356,6 +367,37 @@ T Quartile( const std::vector<T>& dataset, unsigned int quartile_num )
   }
   
   return quartile;
+}
+
+// This function returns a given quartile of a vector dataset as a float value.
+// The median is not included in the calculation of the first or third
+// quartiles.
+// An exception is thrown if:
+//   The dataset is empty (length_error)
+//   The dataset is not sorted in ascending order (invalid_argument)
+//   The quartile is not 1, 2, or 3 (invalid_argument)
+template <class T>
+float Quartile_ToFloat( const std::vector<T>& dataset,
+                        unsigned int quartile_num )
+{
+  if( dataset.empty() )
+  {
+    throw std::length_error( "Error: Quartile_ToFloat() was given an empty " \
+      "dataset." );
+  }
+  if( IsUnsorted( dataset ) )
+  {
+    throw std::invalid_argument( "Error: Quartile_ToFloat() was given an " \
+      "unsorted dataset." );
+  }
+  if( quartile_num < 1 || 3 < quartile_num )
+  {
+    throw std::invalid_argument( "Error: Quartile_ToFloat() was given an " \
+      "invalid quartile number (must be 1, 2, or 3)." );
+  }
+  
+  std::vector<float> dataset_fl( dataset.begin(), dataset.end() );
+  return Quartile( dataset_fl, quartile_num );
 }
 
 #endif // SINGLE_VARIABLE_ANALYSIS_HPP_
