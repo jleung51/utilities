@@ -128,7 +128,7 @@ int main()
             << std::endl;
   
   
-  std::cout << "Quartile():"
+  std::cout << "Quartile() and Quartile_ToFloat():"
             << std::endl;
   
   std::vector<int> dataset_quartile_7;
@@ -172,8 +172,8 @@ int main()
             << std::endl;
   std::cout << "  Q3 = "
             << Quartile_ToFloat( dataset_quartile_10, 3 )
+            << std::endl
             << std::endl;
-
-            
+  
   return 0;
 }
