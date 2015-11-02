@@ -299,7 +299,7 @@ T Median( const std::vector<T>& dataset )
   }
   else  // Odd number of elements; median does not require calculation
   {
-    return dataset[ size/2 ];
+    return dataset[ floor(size/2.0) ];
   }
 }
 
