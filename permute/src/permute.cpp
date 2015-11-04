@@ -1,7 +1,7 @@
 /*
  *
  * Authors: Jeffrey Leung
- * Last edited: 2015-10-30
+ * Last edited: 2015-11-03
  *
  * This C++ file contains functions which return all permutations of a given
  * set of characters.
@@ -37,7 +37,6 @@ void PermuteHelper( std::vector<std::string>& permutations,
 // removes them.
 // An exception is thrown if:
 //   v is given an empty vector (invalid_argument)
-//   v is given an unsorted vector (invalid_argument)
 template <class T>
 void RemoveVectorDuplicates( std::vector<T>& v );
 
@@ -93,7 +92,6 @@ void PermuteHelper( std::vector<std::string>& permutations,
 // removes them.
 // An exception is thrown if:
 //   v is given an empty vector (invalid_argument)
-//   v is given an unsorted vector (invalid_argument)
 template <class T>
 void RemoveVectorDuplicates( std::vector<T>& v )
 {
