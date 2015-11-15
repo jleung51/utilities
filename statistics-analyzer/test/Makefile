@@ -5,7 +5,7 @@ SOURCES  = ../src/multi-variable-analysis.cpp \
 
 # Header files
 HSOURCES = print-data-structures.hpp \
-           ../include/merge-sort-vector.hpp \
+           ../include/merge-sort.hpp \
            ../include/single-variable-analysis.hpp \
            ../include/multi-variable-analysis.hpp \
            ../include/statistics-analyzer.hpp \

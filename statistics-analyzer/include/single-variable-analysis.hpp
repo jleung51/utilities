@@ -16,7 +16,7 @@
 #include <stdexcept>
 #include <vector>
 
-#include "merge-sort-vector.hpp"
+#include "merge-sort.hpp"
 
 // Function prototypes:
 
@@ -182,7 +182,7 @@ void Sort( std::vector<T>& dataset )
   {
     throw std::length_error( "Error: Sort() was given an empty dataset." );
   }
-  MergeSortVector( dataset );
+  MergeSort<T>( dataset.begin(), dataset.end() );
   return;
 }
 
