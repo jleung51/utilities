@@ -1,13 +1,13 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-11-01
+ * Last edited: 2015-11-14
  *
  * This C++ header file contains functions which analyze a single dataset,
  * a vector of values.
  *
  */
- 
+
 #ifndef SINGLE_VARIABLE_ANALYSIS_HPP_
 #define SINGLE_VARIABLE_ANALYSIS_HPP_
 
@@ -70,6 +70,13 @@ T Minimum( const std::vector<T>& dataset );
 //   The dataset is not sorted in ascending order (invalid_argument)
 template <class T>
 T Maximum( const std::vector<T>& dataset );
+
+// This function returns the range of a vector dataset.
+// An exception is thrown if:
+//   The dataset is empty (length_error
+//   The dataset is not sorted in ascending order (invalid_argument)
+template <class T>
+T Range( const std::vector<T>& dataset );
 
 // This function returns a given quartile of a vector dataset.
 // The median is not included in the calculation of the first or third
@@ -213,7 +220,7 @@ float Mean_ToFloat( const std::vector<T>& dataset )
     throw std::length_error( "Error: Mean_ToFloat() was given an empty "
       "dataset." );
   }
-  
+
   std::vector<float> dataset_fl( dataset.begin(), dataset.end() );
   return Mean( dataset_fl );
 }
@@ -241,15 +248,15 @@ void Mode( const std::vector<T>& dataset, std::vector<T>& modes )
     throw std::invalid_argument( "Error: Mode() was given a non-empty vector "
       "with which to return the modes." );
   }
-  
+
   T current = dataset[0];
   unsigned int current_count = 1;
   unsigned int mode_count = 1;
-  
+
   // Deals with the edge_case of the last element not being checked against
   // the other mode(s).
   typename std::vector<T>::const_iterator i_previous = dataset.begin();
-  
+
   typename std::vector<T>::const_iterator i;
   for( i = ++dataset.begin(); i_previous != dataset.end(); ++i )
   {
@@ -261,7 +268,7 @@ void Mode( const std::vector<T>& dataset, std::vector<T>& modes )
     else if( i == dataset.end() ||
              current != *i )
     {
-    
+
       if( current_count > mode_count )  // New mode with greater count
       {
         mode_count = current_count;
@@ -272,18 +279,18 @@ void Mode( const std::vector<T>& dataset, std::vector<T>& modes )
       {
         modes.push_back( current );
       }
-      
+
       if( i != dataset.end() )
       {
         current = *i;
       }
       i_previous = i;
       current_count = 1;
-      
+
     }
-    
+
   }
-  
+
   return;
 }
 
@@ -303,9 +310,9 @@ T Median( const std::vector<T>& dataset )
     throw std::invalid_argument( "Error: Median() was given an unsorted " \
       "dataset." );
   }
-  
+
   typename std::vector<T>::size_type size = dataset.size();
-  
+
   if( size % 2 == 0 )  // Even number of elements; median requires calculation
   {
     return ( dataset[size/2 - 1] + dataset[size/2] ) / 2;
@@ -340,10 +347,10 @@ T Quartile( const std::vector<T>& dataset, unsigned int quartile_num )
     throw std::invalid_argument( "Error: Quartile() was given an invalid "\
       "quartile number (must be 1, 2, or 3)." );
   }
-  
+
   T quartile;
   typename std::vector<T>::size_type size = dataset.size();
-  
+
   if( quartile_num == 1 )
   {
     std::vector<T> dataset_quartile( dataset.begin(),
@@ -365,7 +372,7 @@ T Quartile( const std::vector<T>& dataset, unsigned int quartile_num )
     throw std::logic_error( "Error: Quartile() failed to catch an invalid " \
       "quartile number." );
   }
-  
+
   return quartile;
 }
 
@@ -395,7 +402,7 @@ float Quartile_ToFloat( const std::vector<T>& dataset,
     throw std::invalid_argument( "Error: Quartile_ToFloat() was given an " \
       "invalid quartile number (must be 1, 2, or 3)." );
   }
-  
+
   std::vector<float> dataset_fl( dataset.begin(), dataset.end() );
   return Quartile( dataset_fl, quartile_num );
 }
