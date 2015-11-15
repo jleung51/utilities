@@ -1,7 +1,7 @@
 /*
  *
  * Author: Jeffrey Leung
- * Last edited: 2015-10-31
+ * Last edited: 2015-11-14
  *
  * This C++ program tests the statistical analysis functions/classes.
  *
