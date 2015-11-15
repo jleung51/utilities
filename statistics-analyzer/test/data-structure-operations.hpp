@@ -21,6 +21,12 @@
 template <class Iterator>
 void PrintHorizontal( const Iterator begin, const Iterator end );
 
+// This function returns true if two given iterable data structures
+// contain equivalent values, and false otherwise.
+template <class Iterator>
+bool Equivalent( const Iterator begin_1, const Iterator end_1,
+                 const Iterator begin_2, const Iterator end_2 );
+
 // Function implementations:
 
 // This function prints the contents of a given iterable data
@@ -37,6 +43,33 @@ void PrintHorizontal( const Iterator begin, const Iterator end )
   }
   std::cout << "]";
   return;
+}
+
+// This function returns true if two given iterable data structures
+// contain equivalent values, and false otherwise.
+template <class Iterator>
+bool Equivalent( const Iterator begin_1, const Iterator end_1,
+                 const Iterator begin_2, const Iterator end_2 )
+{
+  Iterator i_1 = begin_1;
+  Iterator i_2 = begin_2;
+
+  while( i_1 != end_1 && i_2 != end_2 )
+  {
+    if( *i_1 != *i_2 )
+    {
+      return false;
+    }
+    std::advance( i_1, 1 );
+    std::advance( i_2, 1 );
+  }
+
+  if( i_1 != end_1 || i_2 != end_2 )  // Different lengths
+  {
+    return false;
+  }
+
+  return true;
 }
 
 #endif  // PRINT_DATA_STRUCTURES_HPP_

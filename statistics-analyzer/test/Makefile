@@ -2,7 +2,8 @@
 SOURCES_SORT = test-sort.cpp \
 
 # Header files for sorting
-HSOURCES_SORT = ../include/merge-sort.hpp \
+HSOURCES_SORT = data-structure-operations.hpp \
+                ../include/merge-sort.hpp \
 
 # Source files for single-variable analysis
 SOURCES_SVAR = ../src/multi-variable-analysis.cpp \
@@ -10,7 +11,7 @@ SOURCES_SVAR = ../src/multi-variable-analysis.cpp \
                 test-svar.cpp \
 
 # Header files for single-variable analysis
-HSOURCES_SVAR = print-data-structures.hpp \
+HSOURCES_SVAR = data-structure-operations.hpp \
                 ../include/merge-sort.hpp \
                 ../include/single-variable-analysis.hpp \
                 ../include/multi-variable-analysis.hpp \
@@ -48,4 +49,3 @@ svar: $(SOURCES_SVAR) $(HSOURCES_SVAR)
 # Removes created files
 clean:
 	rm -f output *.o *~
-
