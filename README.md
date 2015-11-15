@@ -1,2 +1,2 @@
-# mini_programs
+# Mini Programs
 Implementations of small, simple programs.
