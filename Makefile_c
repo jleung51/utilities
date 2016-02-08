@@ -6,8 +6,11 @@ HEADERS = \
 	file1.h \
 	file2.h
 
+# gcc options
+GCC = gcc -std=c11 -Wall
+
 # Compiler options
-CFLAGS = -std=c11 -g -Wall
+CFLAGS = -c
 
 # Output filename
 OUTPUT = output
@@ -29,7 +32,7 @@ help:
 
 # $ make <output_name>
 <output_name>: $(SOURCES) $(HEADERS)
-	gcc $(CFLAGS) $(SOURCES) -o $(OUTPUT) -lm
+	$(GCC) $(CFLAGS) $(SOURCES) -o $(OUTPUT)
 	# To execute the program, run: ./$(OUTPUT)
 
 # $ make memchk
