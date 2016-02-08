@@ -2,7 +2,9 @@
 SOURCES  = <source_files>
 
 # Header files
-HSOURCES = <header_files>
+HEADERS = \
+	file1.h \
+	file2.h
 
 # Compiler options
 CFLAGS = -std=c11 -g -Wall
@@ -26,12 +28,12 @@ help:
 	#   To remove compiled output files, run: make clean
 
 # $ make <output_name>
-<output_name>: $(SOURCES) $(HSOURCES)
+<output_name>: $(SOURCES) $(HEADERS)
 	gcc $(CFLAGS) $(SOURCES) -o $(OUTPUT) -lm
 	# To execute the program, run: ./$(OUTPUT)
 
 # $ make memchk
-memchk: $(SOURCES) $(HSOURCES)
+memchk: $(SOURCES) $(HEADERS)
 	make <output_name>
 	valgrind --leak-check=full ./$(OUTPUT)
 
