@@ -22,7 +22,7 @@ OUTPUT = output
 help:
 	# INSTRUCTIONS:
 	#   To test ___, run: make ___
-	#   To test memory allocation, run: make ___ mem_chk
+	#   To test memory allocation, run: make memchk
 	#   To remove compiled output files, run: make clean
 
 # $ make <output_name>
@@ -30,8 +30,9 @@ help:
 	gcc $(CFLAGS) $(SOURCES) -o $(OUTPUT) -lm
 	# To execute the program, run: ./$(OUTPUT)
 
-# $ make mem_chk
-mem_chk: $(SOURCES) $(HSOURCES)
+# $ make memchk
+memchk: $(SOURCES) $(HSOURCES)
+	make <output_name>
 	valgrind --leak-check=full ./$(OUTPUT)
 
 # $ make <custom>
