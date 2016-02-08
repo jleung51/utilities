@@ -1,6 +1,3 @@
-# Source files
-SOURCES  = <source_files>
-
 # Header files
 HEADERS = \
 	file1.h \
@@ -30,13 +27,20 @@ help:
 	#   To test memory allocation, run: make memchk
 	#   To remove compiled output files, run: make clean
 
+# Executed whenever an object file is out of date
+# Symbols:
+#   % refers to any character(s)
+#   $< refers to the first item in the dependency list
+%.o: %.cpp $(HEADERS)  #TODO Replace %.cpp with the path to the .cpp file
+	$(GCC) $(CFLAGS) $<
+
 # $ make <output_name>
-<output_name>: $(SOURCES) $(HEADERS)
-	$(GCC) $(CFLAGS) $(SOURCES) -o $(OUTPUT)
+<output_name>: file1.o file2.o
+	$(GCC) file1.o file2.o -o $(OUTPUT)
 	# To execute the program, run: ./$(OUTPUT)
 
 # $ make memchk
-memchk: $(SOURCES) $(HEADERS)
+memchk: file1.o file2.o
 	make <output_name>
 	valgrind --leak-check=full ./$(OUTPUT)
 
