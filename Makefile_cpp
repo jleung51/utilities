@@ -3,8 +3,8 @@ SOURCES  = <source_files>
 
 # Header files
 HEADERS = \
-	file1.h \
-	file2.h
+	file1.hpp \
+	file2.hpp
 
 # g++ options
 GCC = g++ -std=c++14
