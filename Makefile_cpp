@@ -2,7 +2,9 @@
 SOURCES  = <source_files>
 
 # Header files
-HSOURCES = <header_files>
+HEADERS = \
+	file1.h \
+	file2.h
 
 # Compiler options
 CFLAGS = -std=c++14 -g -Wall
@@ -25,7 +27,7 @@ help:
 	#   To remove compiled output files, run: make clean
 
 # $ make <output_name>
-<output_name>: $(SOURCES) $(HSOURCES)
+<output_name>: $(SOURCES) $(HEADERS)
 	g++ $(CFLAGS) $(SOURCES) -o $(OUTPUT)
 	# To execute the program, run: ./$(OUTPUT)
 
