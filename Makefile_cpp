@@ -7,6 +7,9 @@ HSOURCES = <header_files>
 # Compiler options
 CFLAGS = -std=c++14 -g -Wall
 
+# Output filename
+OUTPUT = output
+
 #####
 ###
 #
@@ -24,12 +27,12 @@ help:
 
 # $ make <output_name>
 <output_name>: $(SOURCES) $(HSOURCES)
-	g++ $(CFLAGS) $(SOURCES) -o <output_name>
-	# To execute the program, run: ./<output_name>
+	g++ $(CFLAGS) $(SOURCES) -o $(OUTPUT)
+	# To execute the program, run: ./$(OUTPUT)
 
 # $ make mem_chk
 mem_chk: $(SOURCES) $(HSOURCES)
-	valgrind --leak-check=full ./<output_name>
+	valgrind --leak-check=full ./$(OUTPUT)
 
 # $ make <custom>
 <custom>: <source_files>
@@ -38,4 +41,4 @@ mem_chk: $(SOURCES) $(HSOURCES)
 # $ make clean
 # Removes created files
 clean:
-	rm -f <output_name> *.o *~
+	rm -f $(OUTPUT) *.o *~
