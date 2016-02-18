@@ -4,7 +4,7 @@ HEADERS = \
 	file2.h
 
 # gcc options
-GCC = gcc -std=c11 -Wall
+GCC = gcc -std=c11 -Wall -Wextra -Wmissing-declarations -Werror
 
 # Compiler options
 CFLAGS = -c
