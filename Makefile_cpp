@@ -1,6 +1,3 @@
-# Source files
-SOURCES  = <source_files>
-
 # Header files
 HEADERS = \
 	file1.hpp \
@@ -8,6 +5,9 @@ HEADERS = \
 
 # g++ options
 GCC = g++ -std=c++14
+
+# g++ compiling flags
+GCC-CFLAGS = -c -Wall -Wextra -Wmissing-declarations -Werror
 
 # g++ linking flags
 GCC-LFLAGS = -Wall -Wextra -Wmissing-declarations -Werror
@@ -32,9 +32,16 @@ help:
 	#   To test ___, run: make ___
 	#   To remove compiled output files, run: make clean
 
+# Executed whenever an object file is out of date
+# Symbols:
+#   % refers to any character(s)
+#   $< refers to the first item in the dependency list
+%.o: %.cpp $(HEADERS)  #TODO Use the path to the .cpp files, while keeping %.cpp - e.g. ../src/%.cpp
+	$(GCC) $(GCC-CFLAGS) $<
+
 # $ make <output_name>
-<output_name>: $(SOURCES) $(HEADERS)
-	$(GCC) $(GCC-LFLAGS) $(SOURCES) -o $(OUTPUT)
+<output_name>: file1.o file2.o
+	$(GCC) $(GCC-LFLAGS) file1.o file2.o -o $(OUTPUT)
 	# To execute the program, run: ./$(OUTPUT)
 
 # $ make <custom>
