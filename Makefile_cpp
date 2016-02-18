@@ -22,17 +22,12 @@ OUTPUT = output
 help:
 	# INSTRUCTIONS:
 	#   To test ___, run: make ___
-	#   To test memory allocation, run: make ___ mem_chk
 	#   To remove compiled output files, run: make clean
 
 # $ make <output_name>
 <output_name>: $(SOURCES) $(HSOURCES)
 	g++ $(CFLAGS) $(SOURCES) -o $(OUTPUT)
 	# To execute the program, run: ./$(OUTPUT)
-
-# $ make mem_chk
-mem_chk: $(SOURCES) $(HSOURCES)
-	valgrind --leak-check=full ./$(OUTPUT)
 
 # $ make <custom>
 <custom>: <source_files>
