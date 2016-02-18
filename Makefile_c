@@ -31,7 +31,7 @@ help:
 # Symbols:
 #   % refers to any character(s)
 #   $< refers to the first item in the dependency list
-%.o: %.cpp $(HEADERS)  #TODO Replace %.cpp with the path to the .cpp file
+%.o: %.c $(HEADERS)  #TODO Use the path to the .c files, while keeping %.c - e.g. ../src/%.c
 	$(GCC) $(CFLAGS) $<
 
 # $ make <output_name>
