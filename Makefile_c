@@ -22,10 +22,10 @@ OUTPUT = output
 
 # $ 'make' or 'make help'
 help:
-	# INSTRUCTIONS:
-	#   To test ___, run: make ___
-	#   To test memory allocation, run: make memchk
-	#   To remove compiled output files, run: make clean
+	@echo "INSTRUCTIONS:"
+	@echo "  To test ___, run: make ___"
+	@echo "  To test memory allocation, run: make memchk"
+	@echo "  To remove compiled output files, run: make clean"
 
 # Executed whenever an object file is out of date
 # Symbols:
@@ -37,7 +37,7 @@ help:
 # $ make <output_name>
 <output_name>: file1.o file2.o
 	$(GCC) file1.o file2.o -o $(OUTPUT)
-	# To execute the program, run: ./$(OUTPUT)
+	@echo "To execute the program, run: ./$(OUTPUT)"
 
 # $ make memchk
 memchk: file1.o file2.o
@@ -47,6 +47,7 @@ memchk: file1.o file2.o
 # $ make <custom>
 <custom>: <source_files>
 	<command>
+	@echo "Instructions/Explanation"
 
 # $ make clean
 # Removes created files
