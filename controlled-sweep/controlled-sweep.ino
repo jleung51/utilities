@@ -4,7 +4,6 @@
 
 #include <Servo.h>
 
-const unsigned int pinServoPower = 12;
 const unsigned int pinServoOutput = 9;
 
 Servo s;
@@ -77,9 +76,6 @@ void ControlledSweep(
 }
 
 void setup() {
-  pinMode(pinServoPower, OUTPUT);
-  digitalWrite(pinServoPower, HIGH);
-
   s.attach(pinServoOutput);
 }
 
