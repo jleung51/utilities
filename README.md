@@ -1,2 +1,3 @@
-# Mini Programs
-Implementations of small, simple programs.
+# Utilities
+
+Short, useful programs and scripts.
