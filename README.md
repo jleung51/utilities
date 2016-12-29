@@ -1,3 +1,3 @@
 # Utilities
 
-Short, useful programs and scripts.
+Short and convenient components of programs (generally not for standalone use).
