@@ -9,7 +9,7 @@ Install the following pip dependencies:
 * `google-api-python-client`
 * `httplib2`
 
-Setup the [Logger](https://github.com/jleung51/scripts/tree/master/modules/logger) module in this directory.
+Setup the [Logger](https://github.com/jleung51/utilities/tree/master/python_modules/logger) module in this directory.
 
 ### Authorizing Google Account Credentials
 

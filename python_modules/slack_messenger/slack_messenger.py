@@ -33,8 +33,6 @@ class SlackMessenger:
         """Sends a message from the Slackbot.
 
         Does not throw exceptions; outputs any error messages.
-        For an example report, see:
-        https://github.com/jleung51/scripts/blob/master/modules/slack_messenger/README.md
 
         Parameters:
         message_text -- String. The detailed report message.
@@ -71,8 +69,6 @@ class SlackMessenger:
         """Sends a notification with tagged user(s) from the Slackbot.
 
         Does not throw exceptions; outputs any error messages.
-        For an example report, see:
-        https://github.com/jleung51/scripts/blob/master/modules/slack_messenger/README.md
 
         Parameters:
         alert_users -- String. List of Slack users to be notified.
@@ -90,8 +86,6 @@ class SlackMessenger:
         """Sends an report with operation status from the Slackbot.
 
         Does not throw exceptions; outputs any error messages.
-        For an example report, see:
-        https://github.com/jleung51/scripts/blob/master/modules/slack_messenger/README.md
 
         Parameters:
         operation_status -- String. The general message to summarize the report.
