@@ -1,6 +1,6 @@
 # Google API
 
-Python 3 module which utilizes the Google Developer APIs to send an email.
+Python 3 module which provides a wrapper for the Google Developer APIs.
 
 ## Setup
 
