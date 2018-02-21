@@ -140,7 +140,7 @@ class GoogleDriveApi(_GoogleApi):
     _scope = "https://www.googleapis.com/auth/drive"
 
     def __init__(self, application_name=None):
-        """Instantiates a GmailApi object and refreshes its credentials.
+        """Instantiates a GoogleDriveApi object and refreshes its credentials.
 
         Parameters:
         source_email -- String. Gmail account from which your emails
@@ -198,3 +198,23 @@ class GoogleDriveApi(_GoogleApi):
         ).execute()
 
         Logger.debug("File [" + file_path_local + "] uploaded to Google Drive.")
+
+class GoogleCalendarApi(_GoogleApi):
+    """Wrapper for the Google Calendar API."""
+
+    _scope = "https://www.googleapis.com/auth/calendar"
+
+    def __init__(self, application_name=None):
+        """Instantiates a GoogleCalendarApi object and refreshes credentials.
+
+        Parameters:
+        application_name -- String. Application name for the application which
+        uses Google Calendar.
+        """
+        if application_name is None:
+            application_name = "Google Calendar API Wrapper"
+
+        self.application_name = application_name
+
+        http = self._get_credentials().authorize(Http())
+        self._service = build("calendar", "v3", http=http)
