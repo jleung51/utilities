@@ -218,3 +218,35 @@ class GoogleCalendarApi(_GoogleApi):
 
         http = self._get_credentials().authorize(Http())
         self._service = build("calendar", "v3", http=http)
+
+    def list_calendars(self):
+        """Returns a list of all calendars listed on the Google account.
+
+        Reference: https://developers.google.com/google-apps/calendar/v3/reference/calendarList/list
+
+        Returns:
+        Dictionary with the following structure:
+        [
+            {
+                "summary": "Name of the event in Google Calendar",
+                "id": "Event UUID in Google Calendar"
+            },
+            ...
+        ]
+        """
+        cal_list = []
+        page_token = ""
+
+        while(page_token is not None):
+            response = self._service.calendarList()\
+                    .list(pageToken=page_token).execute()
+
+            for calendar in response.get("items"):
+                simple_calendar = {}
+                simple_calendar["summary"] = calendar["summary"]
+                simple_calendar["id"] = calendar["id"]
+                cal_list.append(simple_calendar)
+
+            page_token = response.get("nextPageToken")
+
+        return cal_list
