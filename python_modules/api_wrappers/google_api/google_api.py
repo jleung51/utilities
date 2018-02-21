@@ -250,3 +250,87 @@ class GoogleCalendarApi(_GoogleApi):
             page_token = response.get("nextPageToken")
 
         return cal_list
+
+    @staticmethod
+    def _simplify_event(event):
+        """Simplifies a complex event in-place, only keeping basic elements."""
+        e = {}
+
+        e["summary"] = event["summary"]
+        e["start"] = event["start"]
+        e["end"] = event["end"]
+
+        try:
+            e["description"] = event["description"]
+        except KeyError:
+            pass
+
+        try:
+            e["location"] = event["location"]
+        except KeyError:
+            pass
+
+        event.clear()
+        event.update(e)
+
+    def list_events(self, calendar_id=None, timestamp_min=None,
+            timestamp_max=None, time_zone=None):
+        """Lists all events from the selected calendar.
+
+        Reference: https://developers.google.com/google-apps/calendar/v3/reference/events/list
+
+        Arguments:
+        calendar_id -- String. If not provided, "primary" is used (the
+                default calendar).
+        timeMin -- String. RFC 3339 time.
+            Tools to find the correctly formatted time:
+            https://www.unixtimestamp.com/index.php
+            https://www.infobyip.com/epochtimeconverter.php)
+        timeZone -- String.
+            List of timezones: http://www.timezoneconverter.com/cgi-bin/zonehelp.tzc
+
+        Returns:
+        Dictionary with the following structure:
+        [
+            {
+                "summary": string (Name of the event in Google Calendar)
+                "start": {
+                    "date": date,
+                    "dateTime": datetime,
+                    "timeZone": string
+                },
+                "end": {
+                    "date": date,
+                    "dateTime": datetime,
+                    "timeZone": string
+                },
+                "description": string (Optional - Event description
+                        in Google Calendar),
+                "location": string (Optional - Event location
+                        in Google Calendar)
+            },
+            ...
+        ]
+        """
+        if calendar_id is None:
+            calendar_id = "primary"
+
+        events_list = []
+
+        page_token = ""
+        while(page_token is not None):
+            response = self._service.events() \
+                    .list(calendarId=calendar_id,
+                            timeMin=timestamp_min, timeMax=timestamp_max,
+                            timeZone=time_zone,
+                            showDeleted=False, orderBy="startTime",
+                            singleEvents=True, pageToken=page_token) \
+                    .execute()
+
+            for event in response.get("items"):
+                self._simplify_event(event)
+                events_list.append(event)
+
+            page_token = response.get("nextPageToken")
+
+        return events_list
