@@ -30,6 +30,7 @@ class _GoogleApi:
     """
 
     _scope = ""
+    _service = None
 
     def _get_credentials(self):
         """Refreshes Google access credentials, authorizing if necessary.
@@ -104,7 +105,8 @@ class GmailApi(_GoogleApi):
         self.source_email = source_email
         self.application_name = application_name
 
-        self._get_credentials()
+        http_auth = self._get_credentials().authorize(Http())
+        self._service = build("gmail", "v1", http=http_auth)
 
     def send_email(self, target_email, subject, message):
         """Sends an email to the specific email address.
@@ -122,14 +124,11 @@ class GmailApi(_GoogleApi):
         Logger.debug("Mail subject: " + subject)
         Logger.debug("Mail message: " + message.replace("\n", "[newline]"))
 
-        http_auth = self._get_credentials().authorize(Http())
-        service = build("gmail", "v1", http=http_auth)
-
         mail = self._create_message(
                 self.source_email, target_email,
                 subject, message
         )
-        response = service.users().messages() \
+        response = self._service.users().messages() \
                 .send(userId=self.source_email, body=mail).execute()
 
         Logger.debug("Mail sent.")
@@ -155,7 +154,7 @@ class GoogleDriveApi(_GoogleApi):
         self.application_name = application_name
 
         http_auth = self._get_credentials().authorize(Http())
-        self.__service = build("drive", "v3", http=http_auth)
+        self._service = build("drive", "v3", http=http_auth)
 
     def get_file_list(self):
         """Retrieves the data of all files  and dirs in the Google Drive.
@@ -166,7 +165,7 @@ class GoogleDriveApi(_GoogleApi):
 
         pageToken = ""
         while(pageToken is not None):
-            file_obj = self.__service.files()\
+            file_obj = self._service.files()\
                     .list(pageToken=pageToken).execute()
             file_list.extend(file_obj.get("files"))
             pageToken = file_obj.get("nextPageToken")
@@ -192,7 +191,7 @@ class GoogleDriveApi(_GoogleApi):
         if parent_dir_id is not None:
             body["parents"] = [parent_dir_id]
 
-        self.__service.files().create(
+        self._service.files().create(
                 body=body,
                 media_body=MediaFileUpload(file_path_local),
         ).execute()
