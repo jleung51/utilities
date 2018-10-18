@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 #
-# This Python 3 module provides a function to access the Slack API in order
-# to send a message to a Slack team.
+# This Python 3 module provides functions to output formatted logs.
 
 import time
 
