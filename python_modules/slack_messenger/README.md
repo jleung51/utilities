@@ -13,7 +13,7 @@ Setup the [Logger](https://github.com/jleung51/scripts/tree/master/modules/logge
 
 ### Slack Setup
 
-[Create a Slackbot bot](https://api.slack.com/bot-users) in the Slack team you want to send Slack messages to. Once you are finished the setup, navigate to the _Integration Settings_ section (if you lost the page, it's located at `App Directory > Browse Apps > Custom Integrations > Bots`) and save the API Token displayed there. You will need this API token to authenticate your bot.
+[Create a Slackbot bot](https://api.slack.com/bot-users) in the Slack team you want to send Slack messages to. Once you are finished the setup, navigate to the [_Custom Integrations_](https://jleung-services.slack.com/apps/manage/custom-integrations) page (you can navigate to it through `App Directory > Manage > Custom Integrations`). Click on the bots section and edit the configuration of the bot you created. Save the API Token displayed there; this will be necessary to authenticate your bot.
 
 Invite your Slack bot to the channel they should send a message to.
 
