@@ -5,7 +5,8 @@
 
 import json
 import time
-from slackclient import SlackClient
+from slack import WebClient
+from slack.errors import SlackApiError
 
 # Custom imports
 from logger import Logger
@@ -42,17 +43,16 @@ class SlackMessenger:
         """
 
         try:
-            result = SlackClient(self.slack_token).api_call(
-                    "chat.postMessage",
+            result = WebClient(token=self.slack_token).chat_postMessage(
                     channel = "#" + self.channel,
                     link_names = 1,
                     username = self.slackbot_name,
                     text = message_text
             )
-        except Exception as e:
+        except SlackApiError as e:
             Logger.error(
                     "Module slack_messenger | Error: Message not sent. " +
-                    "Error message: " + str(e)
+                    "Error message: " + e.response['error']
             )
 
         if result.get("ok"):
